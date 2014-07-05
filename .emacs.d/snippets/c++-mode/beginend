@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: beginend
+# key: beginend
+# contributor: akisute3
+# --
+${1:v}.begin(), $1.end()

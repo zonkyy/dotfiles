@@ -1,0 +1,10 @@
+.git
+
+/ddskk/*
+!/ddskk/init
+
+/elisp
+
+/elpa
+
+/inits/old

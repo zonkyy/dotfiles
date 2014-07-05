@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: do
+# key: do
+# contributor: akisute3
+# --
+do {
+  $0
+} while ($1);
