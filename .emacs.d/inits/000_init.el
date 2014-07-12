@@ -4,6 +4,9 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (add-to-list 'load-path "~/.emacs.d/elisp/auto-install")
 
+;;; 自前のプレフィックスキー
+(global-unset-key (kbd "C-l"))
+
 ;;; dwim 用の入力関数
 ;;; - リージョンが指定されていないときはミニバッファから入力を求める
 ;;; - 指定されているときはリージョンの文字列を得る

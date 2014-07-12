@@ -10,8 +10,7 @@
 ;;; C-x C-rでファイル再読み込み
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
 
-;;; 自前プレフィックス
-(global-unset-key (kbd "C-l"))
+;;; C-l をプレフィックスキーとしたため元のコマンドを C-l C-l に変更
 (global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
 
 ;;; C-l r(R) で置換
