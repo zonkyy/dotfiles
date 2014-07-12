@@ -25,6 +25,9 @@
 (setq auto-save-list-file-prefix
       "~/.emacs.cache/auto-save-list/.saves-")
 
+;;; ロックファイルを作成しない
+(setq create-lockfiles nil)
+
 ;;; 規定文字数で自動改行しない
 (setq text-mode-hook 'turn-off-auto-fill)
 
