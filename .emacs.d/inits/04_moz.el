@@ -24,20 +24,28 @@
 
 (defun moz-scrolldown ()
   (interactive)
-   (moz-send-message "goDoCommand('cmd_scrollPageDown');"))
+  (moz-send-message "goDoCommand('cmd_scrollPageDown');"))
 
 (defun moz-scrollup-1 ()
   (interactive)
-   (moz-send-message "goDoCommand('cmd_scrollLineUp');\n"))
+  (moz-send-message "goDoCommand('cmd_scrollLineUp');\n"))
 
 (defun moz-scrollup ()
   (interactive)
-   (moz-send-message "goDoCommand('cmd_scrollPageUp');"))
+  (moz-send-message "goDoCommand('cmd_scrollPageUp');"))
 
 (defun moz-top ()
   (interactive)
-   (moz-send-message "goDoCommand('cmd_scrollTop');\n"))
+  (moz-send-message "goDoCommand('cmd_scrollTop');\n"))
 
 (defun moz-bottom ()
   (interactive)
-   (moz-send-message "goDoCommand('cmd_scrollBottom');\n"))
+  (moz-send-message "goDoCommand('cmd_scrollBottom');\n"))
+
+(defun moz-tab-previous ()
+  (interactive)
+  (moz-send-message "getBrowser().mTabContainer.advanceSelectedTab(-1, true);\n"))
+
+(defun moz-tab-next ()
+  (interactive)
+  (moz-send-message "getBrowser().mTabContainer.advanceSelectedTab(1, true);\n"))
