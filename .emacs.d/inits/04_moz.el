@@ -22,6 +22,10 @@
   (interactive)
   (moz-send-message "goDoCommand('cmd_scrollLineDown');\n"))
 
+(defun moz-scrolldown-10 ()
+  (interactive)
+  (dotimes (i 10) (moz-send-message "goDoCommand('cmd_scrollLineDown');\n")))
+
 (defun moz-scrolldown ()
   (interactive)
   (moz-send-message "goDoCommand('cmd_scrollPageDown');"))
@@ -29,6 +33,10 @@
 (defun moz-scrollup-1 ()
   (interactive)
   (moz-send-message "goDoCommand('cmd_scrollLineUp');\n"))
+
+(defun moz-scrollup-10 ()
+  (interactive)
+  (dotimes (i 10) (moz-send-message "goDoCommand('cmd_scrollLineUp');\n")))
 
 (defun moz-scrollup ()
   (interactive)
