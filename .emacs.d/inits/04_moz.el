@@ -18,29 +18,52 @@
            moz-repl-name ".popenv('inputMode', 'printPrompt'); undefined;\n")))
 
 
-(defun moz-scrolldown-1 ()
-  (interactive)
-  (moz-send-message "goDoCommand('cmd_scrollLineDown');\n"))
+;;; ratio: ページに対するスクロール量の割り合い (100 で PageDown)
+;;; time: アニメーション時間．高いほどゆっくりスクロール．デフォルト 100．
+(defun moz-scroll-down-internal (ratio &optional time)
+  (setq time (or time 100))
+  (moz-send-message
+   (concat "(function(){var t=" (number-to-string time)
+           ",r=" (number-to-string ratio)
+           " ;var i=0,w =document.documentElement,"
+           "s=gBrowser.selectedBrowser.contentWindow.scrollY,"
+           "e=s+w.clientHeight/(100/r),v=(e-s)/t,c=s;for(i;i<t;i++)"
+           "{setTimeout(function(){c+=v;content.scrollTo(0,c);},i+1)}})();")))
+
+(defun moz-scroll-up-internal (ratio &optional time)
+  (setq time (or time 100))
+  (moz-send-message
+   (concat "(function(){var t=" (number-to-string time)
+           ",r=" (number-to-string ratio)
+           " ;var i=0,w =document.documentElement,"
+           "s=gBrowser.selectedBrowser.contentWindow.scrollY,"
+           "e=s+w.clientHeight/(100/r),v=(e-s)/t,c=s;for(i;i<t;i++)"
+           "{setTimeout(function(){c-=v;content.scrollTo(0,c);},i+1)}})();")))
+
 
 (defun moz-scrolldown-10 ()
   (interactive)
-  (dotimes (i 10) (moz-send-message "goDoCommand('cmd_scrollLineDown');\n")))
+  (moz-scroll-down-internal 10))
 
-(defun moz-scrolldown ()
+(defun moz-scrolldown-50 ()
   (interactive)
-  (moz-send-message "goDoCommand('cmd_scrollPageDown');"))
+  (moz-scroll-down-internal 50))
 
-(defun moz-scrollup-1 ()
+(defun moz-scrolldown-100 ()
   (interactive)
-  (moz-send-message "goDoCommand('cmd_scrollLineUp');\n"))
+  (moz-scroll-down-internal 100))
 
 (defun moz-scrollup-10 ()
   (interactive)
-  (dotimes (i 10) (moz-send-message "goDoCommand('cmd_scrollLineUp');\n")))
+  (moz-scroll-up-internal 10))
 
-(defun moz-scrollup ()
+(defun moz-scrollup-50 ()
   (interactive)
-  (moz-send-message "goDoCommand('cmd_scrollPageUp');"))
+  (moz-scroll-up-internal 50))
+
+(defun moz-scrollup-100 ()
+  (interactive)
+  (moz-scroll-up-internal 100))
 
 (defun moz-top ()
   (interactive)
