@@ -41,29 +41,29 @@
            "{setTimeout(function(){c-=v;content.scrollTo(0,c);},i+1)}})();")))
 
 
-(defun moz-scrolldown-10 ()
+(defun moz-scrolldown-line ()
   (interactive)
   (moz-scroll-down-internal 10))
 
-(defun moz-scrolldown-50 ()
+(defun moz-scrolldown-halfpage ()
   (interactive)
-  (moz-scroll-down-internal 50))
+  (moz-scroll-down-internal 45 150))
 
-(defun moz-scrolldown-100 ()
+(defun moz-scrolldown-page ()
   (interactive)
-  (moz-scroll-down-internal 100))
+  (moz-scroll-down-internal 80 200))
 
-(defun moz-scrollup-10 ()
+(defun moz-scrollup-line ()
   (interactive)
   (moz-scroll-up-internal 10))
 
-(defun moz-scrollup-50 ()
+(defun moz-scrollup-halfpage ()
   (interactive)
-  (moz-scroll-up-internal 50))
+  (moz-scroll-up-internal 45 150))
 
-(defun moz-scrollup-100 ()
+(defun moz-scrollup-page ()
   (interactive)
-  (moz-scroll-up-internal 100))
+  (moz-scroll-up-internal 80 200))
 
 (defun moz-top ()
   (interactive)
