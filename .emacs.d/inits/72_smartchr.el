@@ -92,8 +92,12 @@
   (local-set-key (kbd "{")  (smartchr '("{`!!'}" my-smartchr-braces "{")))
   (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
 
+(defun smartchr-keybindings-web ()
+  (local-set-key (kbd "<") (smartchr '("<% `!!' %>" "<%= `!!' %>" "<"))))
+
 
 (add-hook 'ruby-mode-hook 'smartchr-keybindings-ruby)
 (add-hook 'c-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'c++-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'awk-mode-hook 'smartchr-keybindings-awk)
+(add-hook 'web-mode-hook 'smartchr-keybindings-web)
