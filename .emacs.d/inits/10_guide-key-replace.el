@@ -1,0 +1,108 @@
+;;; guide-key の表示を置換する
+
+
+(defvar guide-key-replace-list
+  '(("projectile-switch-to-buffer-other-window" "switch-to-buffer-other-window")
+    ("projectile-display-buffer" "display-buffer")
+    ("projectile-find-dir-other-window" "find-dir-other-window")
+    ("projectile-find-file-other-window" "find-file-other-window")
+    ("projectile-find-implementation-or-test-other-window" "find-implementation-or-test-other-window")
+    ("projectile-run-shell-command-in-root" "run-shell-command-in-root")
+    ("projectile-run-async-shell-command-in-root" "run-async-shell-command-in-root")
+    ("projectile-switch-to-buffer" "switch-to-buffer")
+    ("projectile-compile-project" "compile-project")
+    ("projectile-find-dir" "find-dir")
+    ("projectile-dired" "dired")
+    ("projectile-recentf" "recentf")
+    ("projectile-find-file" "find-file")
+    ("projectile-find-file-in-known-projects" "find-file-in-known-projects")
+    ("projectile-invalidate-cache" "invalidate-cache")
+    ("projectile-ibuffer" "ibuffer")
+    ("projectile-find-tag" "find-tag")
+    ("projectile-kill-buffers" "kill-buffers")
+    ("projectile-find-file-in-directory" "find-file-in-directory")
+    ("projectile-commander" "commander")
+    ("projectile-multi-occur" "multi-occur")
+    ("projectile-switch-project" "switch-project")
+    ("projectile-test-project" "test-project")
+    ("projectile-replace" "replace")
+    ("projectile-regenerate-tags" "regenerate-tags")
+    ("projectile-ack" "ack")
+    ("projectile-grep" "grep")
+    ("projectile-ag" "ag")
+    ("projectile-save-project-buffers" "save-project-buffers")
+    ("projectile-toggle-between-implementation-and-test" "toggle-between-implementation-and-test")
+    ("projectile-find-test-file" "find-test-file")
+    ("projectile-vc" "vc")
+    ("projectile-cache-current-file" "cache-current-file")
+    ("projectile-project-buffers-other-buffer" "project-buffers-other-buffer")
+    ("projectile-rails-find-model" "f) model")
+    ("projectile-rails-find-controller" "f) controller")
+    ("projectile-rails-find-view" "f) view")
+    ("projectile-rails-find-javascript" "f) javascript")
+    ("projectile-rails-find-stylesheet" "f) stylesheet")
+    ("projectile-rails-find-helper" "f) helper")
+    ("projectile-rails-find-spec" "f) spec")
+    ("projectile-rails-find-migration" "f) migration")
+    ("projectile-rails-find-lib" "f) lib")
+    ("projectile-rails-find-initializer" "f) initializer")
+    ("projectile-rails-find-environment" "f) environment")
+    ("projectile-rails-find-log" "f) log")
+    ("projectile-rails-find-locale" "f) locale")
+    ("projectile-rails-find-mailer" "f) mailer")
+    ("projectile-rails-find-layout" "f) layout")
+    ("projectile-rails-goto-file-at-point" "goto-file-at-point")
+    ("projectile-rails-goto-gemfile" "goto-gemfile")
+    ("projectile-rails-goto-routes" "goto-routes")
+    ("projectile-rails-goto-schema" "goto-schema")
+    ("projectile-rails-goto-spec-helper" "goto-spec-helper")
+    ("projectile-rails-find-current-spec" "f) current-spec")
+    ("projectile-rails-find-current-controller" "f) current-controller")
+    ("projectile-rails-find-current-view" "f) current-view")
+    ("projectile-rails-find-current-javascript" "f) current-javascript")
+    ("projectile-rails-find-current-stylesheet" "f) current-stylesheet")
+    ("projectile-rails-find-current-spec" "f) current-spec")
+    ("projectile-rails-find-current-migration" "f) current-migration")
+    ("projectile-rails-extract-region" "extract-region")
+    ("projectile-rails-console" "console")
+    ("projectile-rails-server" "server")
+    ("projectile-rails-rake" "rake")
+    ("projectile-rails-generate" "Generate")
+    ("projectile-rails-mode-run-map" "mode-run-map")
+    ("projectile-rails-find-current-helper" "f) current-helper")
+    ("projectile-rails-find-current-model" "f) current-model")
+    ("projectile-rails-find-feature" "f) feature")
+    ("projectile-rails-mode-goto-map" "mode-goto-map")))
+
+(defun guide-key-replace (x)
+  (or (loop for i in guide-key-replace-list
+            when (equal (car i) (nth 2 x))
+            return `(,(nth 0 x) ,(nth 1 x) ,(nth 1 i)) )
+      x))
+
+(defun guide-key/format-guide-buffer (key-seq &optional regexp)
+  "Format guide buffer. This function returns the number of following keys."
+  (let ((fkey-list nil)      ; list of (following-key space command)
+        (fkey-str-list nil)  ; fontified string of `fkey-list'
+        (fkey-list-len 0)    ; length of above lists
+        (key-dsc (key-description key-seq)))
+    (untabify (point-min) (point-max))  ; replace tab to space
+    (goto-char (point-min))
+    ;; extract following keys from buffer bindings
+    (while (re-search-forward
+            (format "^%s \\([^ \t]+\\)\\([ \t]+\\)\\(\\(?:[^ \t\n]+ ?\\)+\\)$" (regexp-quote key-dsc)) nil t)
+      (add-to-list 'fkey-list
+                   (list (match-string 1) (match-string 2) (match-string 3)) t))
+    ;; filtering
+    (setq fkey-list (mapcar 'guide-key-replace fkey-list))
+    (erase-buffer)
+    (when (> (setq fkey-list-len (length fkey-list)) 0)
+      ;; fontify following keys as string
+      (setq fkey-str-list
+            (loop for (key space command) in fkey-list
+                  collect (guide-key/fontified-string key space command regexp)))
+      ;; insert a few following keys per line
+      (guide-key/insert-following-key fkey-str-list
+                                      (popwin:position-horizontal-p guide-key/popup-window-position))
+      (goto-char (point-min)))
+    fkey-list-len))
