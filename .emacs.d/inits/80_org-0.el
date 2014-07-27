@@ -25,8 +25,9 @@
 (define-key org-mode-map (kbd "C-:") 'prefix-arg-commands-org-insert-heading)
 
 
-;;; 1 つの空行をリストの区切りとみなす
-(setq org-list-empty-line-terminates-plain-lists t)
+;;; heading や list の途中に空行があっても insert-heading に影響させない
+(setq org-blank-before-new-entry '((heading . nil)
+                                   (plain-list-item . nil)))
 
 
 ;;; ハイパーリンク
