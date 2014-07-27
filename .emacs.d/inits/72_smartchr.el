@@ -93,7 +93,7 @@
   (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
 
 (defun smartchr-keybindings-web ()
-  (local-set-key (kbd "<") (smartchr '("<% `!!' %>" "<%= `!!' %>" "<"))))
+  (local-set-key (kbd "<") (smartchr '("<%= `!!' %>" "<% `!!' %>" "<`!!'>" "<"))))
 
 
 (add-hook 'ruby-mode-hook 'smartchr-keybindings-ruby)
