@@ -233,8 +233,8 @@
 ;; ▽モードと▼モード時のアンドゥ情報を記録しない
 ;; (setq skk-undo-kakutei-word-only t)
 
-;; 句読点に ．， を使う
-(setq-default skk-kutouten-type 'en)
+;; 句読点に 、。 を使う
+(setq-default skk-kutouten-type 'jp)
 
 ;; 句読点を動的に決定する
 ;; (add-hook 'skk-mode-hook
