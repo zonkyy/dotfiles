@@ -21,7 +21,6 @@
      :cleanup-fn (lambda ()
                    (delete-region beg end)))))
 
-
 (defun my-smartchr-semicolon ()
   "Insert ';' and newline-and-indent"
   (lexical-let (beg end)
@@ -31,6 +30,30 @@
                   (setq beg (point))
                   (insert ";")
                   (newline-and-indent)
+                  (setq end (point)))
+     :cleanup-fn (lambda ()
+                   (delete-region beg end)))))
+
+(defun my-smartchr-arrow ()
+  "Insert ' ->' and newline-and-indent"
+  (lexical-let (beg end)
+    (smartchr-make-struct
+     :insert-fn (lambda ()
+                  (setq beg (point))
+                  (insert " ->")
+                  (coffee-newline-and-indent)
+                  (setq end (point)))
+     :cleanup-fn (lambda ()
+                   (delete-region beg end)))))
+
+(defun my-smartchr-fat-arrow ()
+  "Insert ' =>' and newline-and-indent"
+  (lexical-let (beg end)
+    (smartchr-make-struct
+     :insert-fn (lambda ()
+                  (setq beg (point))
+                  (insert " =>")
+                  (coffee-newline-and-indent)
                   (setq end (point)))
      :cleanup-fn (lambda ()
                    (delete-region beg end)))))
@@ -95,9 +118,31 @@
 (defun smartchr-keybindings-web ()
   (local-set-key (kbd "<") (smartchr '("<%= `!!' %>" "<% `!!' %>" "<`!!'>" "<"))))
 
+(defun smartchr-keybindings-coffee ()
+  (local-set-key (kbd ";")  (smartchr '(my-smartchr-semicolon ";")))
+  (local-set-key (kbd ",")  (smartchr '(", " ",")))
+  (local-set-key (kbd "=")  (smartchr '(" = " " == " "=")))
+  (local-set-key (kbd "+")  (smartchr '(" + " "++" " += " "+")))
+  (local-set-key (kbd "-")  (smartchr '(" - " "--" " -= " "-")))
+  (local-set-key (kbd ">")  (smartchr '(" > " my-smartchr-arrow " >= " my-smartchr-fat-arrow ">")))
+  (local-set-key (kbd "%")  (smartchr '(" % " " %= " "%")))
+  (local-set-key (kbd "!")  (smartchr '(" != " "!")))
+  (local-set-key (kbd "?")  (smartchr '("?" " ?= ")))
+  (local-set-key (kbd "&")  (smartchr '(" && " " & " "&")))
+  (local-set-key (kbd "*")  (smartchr '("*" " * " " *= ")))
+  (local-set-key (kbd "<")  (smartchr '(" < " " << " " <= " "<`!!'>" "<")))
+  (local-set-key (kbd "|")  (smartchr '("|" " ||= ")))
+  (local-set-key (kbd "/")  (smartchr '("/" " / " " /= ")))
+  (local-set-key (kbd "#")  (smartchr '("#{`!!'}" "#")))
+  (local-set-key (kbd "(")  (smartchr '("(`!!')" "(")))
+  (local-set-key (kbd "[")  (smartchr '("[`!!']" "[")))
+  (local-set-key (kbd "{")  (smartchr '("{`!!'}" "{")))
+  (local-set-key (kbd "'")  (smartchr '("'`!!''" "'")))
+  (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
 
 (add-hook 'ruby-mode-hook 'smartchr-keybindings-ruby)
 (add-hook 'c-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'c++-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'awk-mode-hook 'smartchr-keybindings-awk)
 (add-hook 'web-mode-hook 'smartchr-keybindings-web)
+(add-hook 'coffee-mode-hook 'smartchr-keybindings-coffee)
