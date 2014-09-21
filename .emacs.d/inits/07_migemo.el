@@ -7,11 +7,9 @@
 (setq migemo-command "cmigemo")
 (setq migemo-options '("-q" "--emacs"))
 
-;;; migemo-dict のパスを指定
-(cond ((file-exists-p "/usr/share/migemo/utf-8/migemo-dict")
-       (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict"))
-      ((file-exists-p "/usr/share/cmigemo/utf-8/migemo-dict")
-       (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")))
+;;; migemo-dict のパスを指定 (環境変数 MIGEMO-DICT-PATH を取得)
+;;; (package-install 'exec-path-from-shell)
+(setq migemo-dictionary (exec-path-from-shell-copy-env "MIGEMO_DICT_PATH"))
 
 (setq migemo-user-dictionary nil)
 (setq migemo-regex-dictionary nil)
