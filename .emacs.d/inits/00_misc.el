@@ -133,6 +133,9 @@
 ;;; fill-paragraph のエラーを防止
 (setq kinsoku-limit 4)
 
+;;; 内部での日付/時間表記は英語で行う
+(setq system-time-locale "C")
+
 
 ;;; 長いリストも全て出力する
 (setq eval-expression-print-length nil)
