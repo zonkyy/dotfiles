@@ -12,7 +12,7 @@
 ;;; キー設定
 (global-set-key (kbd "M-[") 'bm-previous)
 (global-set-key (kbd "M-]") 'bm-next)
-(global-set-key (kbd "M-SPC") 'bm-toggle)
+(global-set-key (kbd "C-l SPC") 'bm-toggle)
 
 ;;; bm 保存設定
 (setq-default bm-buffer-persistence t)
