@@ -20,6 +20,8 @@
     (read-string (format "%s (default:%s): " prompt (thing-at-point 'symbol))
                  nil nil (thing-at-point 'symbol))))
 
-;;; 前置引数で動作を変える関数作成用
-;;; (auto-install-from-url "https://github.com/tm8st/emacs-prefix-arg-commands/raw/master/prefix-arg-commands.el")
-(require 'prefix-arg-commands)
+;;; コマンドマルチプレクサ
+;;; (package-install 'mykie)
+(require 'mykie)
+(setq mykie:use-major-mode-key-override t)
+(mykie:initialize)

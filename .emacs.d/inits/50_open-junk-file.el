@@ -21,9 +21,6 @@
   (let ((open-junk-file-find-file-function 'find-file))
     (open-junk-file)))
 
-(prefix-arg-commands-create prefix-arg-commands-open-junk-file
-                            '(open-junk-file open-junk-file-current-window))
-
 
 ;;; 一番新しい junk コードを開く
 (require 'em-glob)
@@ -52,6 +49,8 @@
 
 
 ;;; キー割り当て
-(global-set-key (kbd "C-x j") 'prefix-arg-commands-open-junk-file)
+(mykie:global-set-key "C-x j"
+  :default open-junk-file
+  :C-u     open-junk-file-current-window)
 (global-set-key (kbd "C-x J") 'open-last-junk-file)
 (global-set-key (kbd "C-x M-j") 'helm-open-junk-file)

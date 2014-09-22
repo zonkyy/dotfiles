@@ -25,7 +25,9 @@ This command does the reverse of `fill-region'."
 
 
 ;;; M-q: fill-paragraph,  C-u M-q: unfill-paragraph
-(prefix-arg-commands-create prefix-arg-commands-fill
-                            '(fill-paragraph unfill-paragraph))
-(global-set-key (kbd "M-q") 'prefix-arg-commands-fill)
-(global-set-key (kbd "C-l q") 'text-adjust-buffer)
+(mykie:set-keys nil
+  "M-q"
+  :default fill-paragraph
+  :C-u!    unfill-paragraph
+  "C-l q"
+  :default text-adjust-buffer)

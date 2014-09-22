@@ -17,12 +17,10 @@
   (cond ((org-at-heading-p) (org-do-promote))
         ((org-at-item-p) (org-outdent-item))))
 
-(prefix-arg-commands-create prefix-arg-commands-org-insert-heading
-                            '((lambda () (org-insert-heading nil))
-                              (lambda () (org-insert-subheading nil))
-                              (lambda () (org-insert-upheading nil))))
-
-(define-key org-mode-map (kbd "C-:") 'prefix-arg-commands-org-insert-heading)
+(mykie:global-set-key "C-:"
+  :default (org-insert-heading nil)
+  :C-u     (org-insert-subheading nil)
+  :C-u*2   (org-insert-upheading nil))
 
 
 ;;; heading や list の途中に空行があっても insert-heading に影響させない
