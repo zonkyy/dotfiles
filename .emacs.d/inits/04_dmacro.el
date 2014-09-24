@@ -9,4 +9,4 @@
     ;; dmacro-exec is overriden here
     (call-interactively 'dmacro-exec)))
 
-(global-set-key (kbd "C-o") 'dmacro-exec)
+(global-set-key (kbd "<f4>") 'dmacro-exec)
