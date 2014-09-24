@@ -16,7 +16,9 @@
 
 
 ;;; キー設定
-(global-set-key (kbd "C-;") 'helm-for-files)
+(mykie:global-set-key "C-;"
+  :default helm-for-files
+  :C-u helm-occur)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (define-key helm-map (kbd "C-j") 'helm-maybe-exit-minibuffer)
