@@ -19,9 +19,3 @@
         (message ""))
     (read-string (format "%s (default:%s): " prompt (thing-at-point 'symbol))
                  nil nil (thing-at-point 'symbol))))
-
-;;; コマンドマルチプレクサ
-;;; (package-install 'mykie)
-(require 'mykie)
-(setq mykie:use-major-mode-key-override t)
-(mykie:initialize)
