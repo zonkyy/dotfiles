@@ -25,5 +25,5 @@
         ("elisp" "~/Dropbox/dotfiles/.emacs.d/inits/" (".el") nil)))
 
 
-(global-set-key (kbd "C-l m") 'dmoccur)
+(global-set-key (kbd "C-l o") 'dmoccur)
 (global-set-key (kbd "C-l k") 'clean-dmoccur-buffers)

@@ -2,3 +2,5 @@
 
 ;;; (package-install 'ag)
 (require 'ag)
+
+(global-set-key (kbd "C-l a") 'ag)
