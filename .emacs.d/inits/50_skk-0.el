@@ -7,7 +7,7 @@
 
 
 ;;; isearch では SKK を使用しない for migemo
-(setq skk-isearch-state-mode 'latin)
+(setq skk-isearch-start-mode 'latin)
 
 
 ;;; SKK モードでファイルを開く
