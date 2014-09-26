@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'projectile)
-(require 'projectile)
+(use-package projectile)
 (projectile-global-mode)
 
 ;;; ファイル選択に helm を使用する

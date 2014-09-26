@@ -3,7 +3,7 @@
 
 ;;; (auto-install-from-url "http://www.rubyist.net/~rubikitch/archive/mell.el")
 ;;; (auto-install-from-url "http://www.rubyist.net/~rubikitch/archive/text-adjust.el")
-(require 'text-adjust)
+(use-package text-adjust)
 ;; 句読点はバッファごとに設定
 (setq text-adjust-rule-kutouten nil)
 

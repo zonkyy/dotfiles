@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'helm-dired-recent-dirs)
-(require 'helm-dired-recent-dirs)
+(use-package helm-dired-recent-dirs)
 
 ;;; dired バッファ上で実行したときは先にそのバッファを消すように挙動を変更
 (defun helm-dired-internal (dir)

@@ -3,7 +3,7 @@
 
 ;;; (package-install 'emamux)
 ;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/tmux-doit.el")
-(require 'emamux)
+(use-package emamux)
 (load "tmux-doit.el")
 
 

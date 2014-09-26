@@ -1,8 +1,8 @@
 ;;;; dired の設定・拡張
 
 
-(require 'dired)
-(require 'dired-x)
+(use-package dired)
+(use-package dired-x)
 
 ;; ファイルを削除したらゴミ箱へ
 (setq delete-by-moving-to-trash t)

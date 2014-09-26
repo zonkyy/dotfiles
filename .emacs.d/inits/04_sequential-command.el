@@ -2,7 +2,7 @@
 
 
 ;;; (auto-install-batch "sequential-command")
-(require 'sequential-command-config)
+(use-package sequential-command-config)
 
 
 ;;; sequential-command-config のセットアップを書き換え

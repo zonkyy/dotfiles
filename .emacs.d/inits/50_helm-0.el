@@ -3,16 +3,16 @@
 
 ;;; (package-install 'helm)
 ;;; (package-install 'helm-migemo)
-(require 'helm)
-(require 'helm-config)
-(require 'helm-migemo)
-(require 'helm-mode)
+(use-package helm)
+(use-package helm-config)
+(use-package helm-migemo)
+(use-package helm-mode)
 
 ;;; (package-install 'helm-orgcard)
-(require 'helm-orgcard)
+(use-package helm-orgcard)
 
 ;;; (package-install 'helm-descbinds)
-(require 'helm-descbinds)
+(use-package helm-descbinds)
 
 
 ;;; キー設定

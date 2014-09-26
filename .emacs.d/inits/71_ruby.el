@@ -14,11 +14,11 @@
 
 ;;; RSpec モード
 ;;; (package-install 'rspec-mode)
-(require 'rspec-mode)
+(use-package rspec-mode)
 
 
 ;;; (package-install 'yaml-mode)
-(require 'yaml-mode)
+(use-package yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 
 
@@ -52,7 +52,7 @@
         (define-key map [remap newline] 'ruby-electric-space/return)
         (define-key map [remap newline-and-indent] 'ruby-electric-space/return)
         map))
-(require 'ruby-electric)
+(use-package ruby-electric)
 
 ;;; ruby-electric に足りない関数を追加
 (defun ruby-insert-end ()
@@ -64,15 +64,15 @@
 
 ;;; end に対応する行のハイライト
 ;;; (package-install 'ruby-block)
-(require 'ruby-block)
+(use-package ruby-block)
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
 
 ;;; Ruby 用ツール群
 ;;; $ gem install rcodetools
-(require 'rcodetools)
-(require 'anything-rcodetools)
+(use-package rcodetools)
+(use-package anything-rcodetools)
 
 
 ;;; デバッグツール
@@ -84,7 +84,7 @@ and source-file directory for your debugger." t)
 
 
 ;;; aline設定
-(require 'align)
+(use-package align)
 (add-to-list 'align-rules-list
              '(ruby-comma-delimiter
                (regexp . ",\\(\\s-*\\)[^# \t\n]")
@@ -99,13 +99,13 @@ and source-file directory for your debugger." t)
 
 ;;; リファレンス (るりま) の helm インターフェイス
 ;;; (install-elisp "https://raw.github.com/nabeo/anything-myrurema/helm-myrurema/helm-myrurema.el")
-(require 'helm-myrurema)
+(use-package helm-myrurema)
 
 
 ;;; メソッドの定義一覧の利用
 ;;; (install-elisp-from-emacswiki "back-button.el")
 ;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/rdefsx.el")
-(require 'rdefsx)
+(use-package rdefsx)
 (setq rdefsx-command (expand-file-name "~/bin/rdefsx"))
 (rdefsx-auto-update-mode 1)
 

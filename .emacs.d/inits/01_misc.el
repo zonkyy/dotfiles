@@ -56,7 +56,7 @@
 (put 'set-goal-column 'disabled nil)
 
 ;;; ファイル内のカーソル位置を記憶する
-(require 'saveplace)
+(use-package saveplace)
 (setq-default save-place t)
 (setq save-place-file "~/.emacs.cache/saved-places")
 

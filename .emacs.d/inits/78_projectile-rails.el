@@ -2,5 +2,5 @@
 
 
 ;;; (package-install 'projectile-rails)
-(require 'projectile-rails)
+(use-package projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)

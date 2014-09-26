@@ -4,7 +4,7 @@
 ;;; ミニバッファに表示
 ;;; (install-elisp-from-emacswiki "sdic-inline.el")
 (setq sdic-inline-map nil)
-(require 'sdic-inline)
+(use-package sdic-inline)
 (sdic-inline-mode t)
 (setq sdic-inline-eiwa-dictionary "~/Dropbox/dict/sdic/eiji.sdic")
 (setq sdic-inline-waei-dictionary "~/Dropbox/dict/sdic/waei.sdic")
@@ -17,7 +17,7 @@
 ;;; ポップアップで表示
 ;;; (install-elisp-from-emacswiki "pos-tip.el")
 ;;; (install-elisp-from-emacswiki "sdic-inline-pos-tip.el")
-(require 'sdic-inline-pos-tip)
+(use-package sdic-inline-pos-tip)
 (setq sdic-inline-pos-tip-timeout-auto 0)
 ;; ミニバッファに表示を許可しているかに関わらず辞書ポップアップ
 (defun sdic-inline-popup ()

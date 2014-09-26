@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'smart-compile)
-(require 'smart-compile)
+(use-package smart-compile)
 
 ;; smart-compile のコマンドをデフォルトから変更
 (add-to-list 'smart-compile-alist '("\\.rb\\'" . "ruby %f"))

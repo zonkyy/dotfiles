@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'ace-jump-mode)
-(require 'ace-jump-mode)
+(use-package ace-jump-mode)
 (global-set-key (kbd "C-o") 'ace-jump-mode)
 
 

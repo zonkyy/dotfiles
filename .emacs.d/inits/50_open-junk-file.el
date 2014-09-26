@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'open-junk-file)
-(require 'open-junk-file)
+(use-package open-junk-file)
 
 ;; 別ウィンドウではなく現在のウィンドウに開く
 (setq open-junk-file-find-file-function 'find-file)
@@ -23,7 +23,7 @@
 
 
 ;;; 一番新しい junk コードを開く
-(require 'em-glob)
+(use-package em-glob)
 (defun open-last-junk-file ()
   (interactive)
   (find-file (car

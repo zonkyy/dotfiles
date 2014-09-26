@@ -1,6 +1,6 @@
 ;;;; The Silver Searcher の Emacs インターフェイス
 
 ;;; (package-install 'ag)
-(require 'ag)
+(use-package ag)
 
 (global-set-key (kbd "C-l a") 'ag)

@@ -1,7 +1,7 @@
 ;;; org-mode でメモを取る org-capture の設定
 
 
-(require 'org-capture)
+(use-package org-capture)
 
 
 ;;; テンプレート

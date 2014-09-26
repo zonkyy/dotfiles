@@ -2,7 +2,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp/work/ox-hatena")
 
-(require 'ox-hatena)
+(use-package ox-hatena)
 (setq org-hatena-output-mode 'blog)
 
 

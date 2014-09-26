@@ -2,7 +2,7 @@
 
 
 ;;; (auto-install-from-url "https://raw.github.com/imakado/emacs-smartchr/master/smartchr.el")
-(require 'smartchr)
+(use-package smartchr)
 
 
 (defun my-smartchr-braces ()

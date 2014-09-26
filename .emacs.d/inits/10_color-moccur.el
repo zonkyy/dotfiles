@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'color-moccur)
-(require 'color-moccur)
+(use-package color-moccur)
 (setq moccur-split-word t)
 (setq guide-key/popup-window-position 'bottom)
 (setq moccur-use-migemo t)

@@ -1,7 +1,7 @@
 ;;;; recentf についての設定
 
 
-(require 'recentf)
+(use-package recentf)
 
 ;; 最大保存数を拡張
 (setq recentf-max-saved-items 2000)
@@ -10,7 +10,7 @@
 
 
 ;;; (package-install 'recentf-ext)
-(require 'recentf-ext)
+(use-package recentf-ext)
 
 (recentf-mode 1)
 (remove-hook 'kill-emacs-hook 'recentf-save-list)

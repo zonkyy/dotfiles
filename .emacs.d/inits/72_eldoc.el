@@ -1,8 +1,8 @@
 ;;;; elisp編集時，カーソル位置の関数の仮引数をエコーエリアに表示
 
 ;;; (package-install 'eldoc-extension)
-(require 'eldoc)
-(require 'eldoc-extension)
+(use-package eldoc)
+(use-package eldoc-extension)
 (setq eldoc-idle-delay 0.20)
 (setq eldoc-echo-area-use-multiline-p t)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)

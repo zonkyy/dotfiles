@@ -1,7 +1,7 @@
 ;;;; flycheck における色設定
 
 ;;; (package-install 'flycheck-color-mode-line)
-(require 'flycheck-color-mode-line)
+(use-package flycheck-color-mode-line)
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 

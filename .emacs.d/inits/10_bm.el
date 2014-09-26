@@ -3,7 +3,7 @@
 
 ;;; (install-package 'bm)
 (setq bm-restore-repository-on-load t)
-(require 'bm)
+(use-package bm)
 
 ;;; face 設定
 (setq bm-highlight-style 'bm-highlight-only-fringe)

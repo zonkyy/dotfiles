@@ -2,7 +2,7 @@
 
 
 ;;; (install-elisp "https://raw.github.com/tomoya/search-web.el/master/search-web.el")
-(require 'search-web)
+(use-package search-web)
 
 (define-prefix-command 'search-web-map)
 (global-set-key (kbd "M-i") 'search-web-map)

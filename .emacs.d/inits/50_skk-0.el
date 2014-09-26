@@ -3,7 +3,7 @@
 
 (add-to-list 'load-path "/usr/local/share/emacs/24.3/site-lisp/skk")
 (setq skk-user-directory "~/.emacs.d/ddskk/")
-(require 'skk-autoloads)
+(use-package skk-autoloads)
 
 
 ;;; isearch では SKK を使用しない for migemo

@@ -1,4 +1,4 @@
 ;;; C での eldoc
 
-(require 'c-eldoc)
+(use-package c-eldoc)
 (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode)

@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'redo+)
-(require 'redo+)
+(use-package redo+)
 (global-set-key (kbd "C-?") 'redo)
 ;; 過去の undo を redo しない
 (setq undo-no-redo t)

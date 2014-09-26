@@ -1,8 +1,8 @@
 ;;;; LaTeX 出力関係
 
 
-(require 'ox-latex)
-(require 'ox-bibtex)
+(use-package ox-latex)
+(use-package ox-bibtex)
 
 
 ;;; pbibtex (旧 jbibtex)

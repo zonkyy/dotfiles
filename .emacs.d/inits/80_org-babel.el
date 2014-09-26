@@ -1,7 +1,7 @@
 ;;;; org 文書でプログラムを実行
 
 
-(require 'ob)
+(use-package ob)
 (setq org-confirm-babel-evaluate nil)
 (setq org-edit-src-content-indentation 0)
 (add-to-list 'org-babel-default-header-args '(:padline . "no"))

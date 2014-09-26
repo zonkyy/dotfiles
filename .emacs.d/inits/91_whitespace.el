@@ -1,7 +1,7 @@
 ;;;; 全角スペース，タブ，行末のスペースを強調
 
 
-(require 'whitespace)
+(use-package whitespace)
 (global-whitespace-mode 1)
 
 

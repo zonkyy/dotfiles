@@ -26,7 +26,7 @@
 
 
 ;;; emacsclientw.exe を使用して外部からemacsにファイルを渡せるようにする
-(require 'server)
+(use-package server)
 (or (server-running-p) (server-start))
 
 

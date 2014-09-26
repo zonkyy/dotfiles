@@ -1,7 +1,7 @@
 ;;;; Emacs で辞書を利用
 
 
-(require 'sdic)
+(use-package sdic)
 (setq sdicf-array-command "/usr/bin/sary")
 (setq sdic-eiwa-dictionary-list
       '((sdicf-client "~/Dropbox/dict/sdic/eiji.sdic" (strategy array))))

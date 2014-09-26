@@ -1,4 +1,4 @@
 ;;; 動的な文法エラーチェック
 
 ;;; (package-install 'flycheck)
-(require 'flycheck)
+(use-package flycheck)

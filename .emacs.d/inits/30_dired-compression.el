@@ -9,7 +9,7 @@
 
 (eval-after-load "dired-aux"
   '(progn
-     (require 'cl)
+     (use-package cl)
      (loop for suffix in my-dired-additional-compression-suffixes
            do (add-to-list 'dired-compress-file-suffixes
                            `(,(concat "\\" suffix "\\'") "" "aunpack")))))

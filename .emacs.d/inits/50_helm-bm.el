@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'helm-bm)
-(require 'helm-bm)
+(use-package helm-bm)
 
 ;;; セパレータが邪魔なので (multiline) を削除
 (setq helm-source-bm

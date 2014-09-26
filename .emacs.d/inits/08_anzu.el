@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'anzu)
-(require 'anzu)
+(use-package anzu)
 (global-anzu-mode +1)
 
 ;;; migemo を利用

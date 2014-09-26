@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'popwin)
-(require 'popwin)
+(use-package popwin)
 
 (popwin-mode 1)
 ;; ポップアップの大きさ

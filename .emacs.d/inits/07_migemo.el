@@ -3,7 +3,7 @@
 
 ;;; 基本設定
 ;;; (package-install 'migemo)
-(require 'migemo)
+(use-package migemo)
 (setq migemo-command "cmigemo")
 (setq migemo-options '("-q" "--emacs"))
 

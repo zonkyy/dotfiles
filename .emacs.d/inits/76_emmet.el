@@ -2,7 +2,7 @@
 
 
 ;;; (package-install 'emmet-mode)
-(require 'emmet-mode)
+(use-package emmet-mode)
 
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)

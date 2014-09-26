@@ -2,4 +2,4 @@
 
 
 ;;; (package-install 'helm-projectile)
-(require 'helm-projectile)
+(use-package helm-projectile)
