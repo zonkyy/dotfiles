@@ -6,7 +6,11 @@
 
 ;;; テンプレート
 (setq org-capture-templates
-      '(("a" "Arch Linux Memo" plain
+      '(("l" "Lifelog" plain
+         (file+datetree "~/Dropbox/documents/org/memo/lifelog.org" nil)
+         nil
+         :unnarrowed t)
+        ("a" "Arch Linux Memo" plain
          (file "~/Dropbox/documents/org/memo/arch.org")
          nil
          :immediate-finish t :jump-to-captured t)
@@ -18,7 +22,7 @@
          (file "~/Dropbox/wanttodo.org")
          nil
          :immediate-finish t :jump-to-captured t)
-        ("l" "Lab Memo" plain
+        ("z" "Lab Memo" plain
          (file (format "~/Dropbox/lab/memo/%s.org"
                        (skk-default-current-date (skk-current-date-1) nil 0 t 0 0 0)))
          nil
