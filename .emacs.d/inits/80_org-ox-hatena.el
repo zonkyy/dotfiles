@@ -1,8 +1,6 @@
 ;;; org 文書をはてな記法に変換する
 
-(add-to-list 'load-path "~/.emacs.d/elisp/work/ox-hatena")
-
-(use-package ox-hatena)
+(use-package ox-hatena :load-path "elisp/work/ox-hatena")
 (setq org-hatena-output-mode 'blog)
 
 
