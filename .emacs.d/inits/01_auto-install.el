@@ -1,8 +1,7 @@
 ;;;; Elisp インストールシステム
 
-
-;;; (package-install 'auto-install)
-(use-package auto-install)
+(use-package auto-install
+  :ensure auto-install)
 
 (setq auto-install-directory "~/.emacs.d/elisp/auto-install")
 (auto-install-update-emacswiki-package-name t)

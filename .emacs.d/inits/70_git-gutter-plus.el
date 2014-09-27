@@ -1,8 +1,7 @@
 ;;;; 前回の git commit からの差分をファイル編集中に視覚的に確認する
 
-
-;;; (package-install 'git-gutter+)
-(use-package git-gutter+)
+(use-package git-gutter+
+  :ensure git-gutter+)
 (global-git-gutter+-mode t)
 
 

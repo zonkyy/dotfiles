@@ -1,8 +1,7 @@
 ;;;; dired で zsh の recent dirs を使用する
 
-
-;;; (package-install 'helm-dired-recent-dirs)
-(use-package helm-dired-recent-dirs)
+(use-package helm-dired-recent-dirs
+  :ensure helm-dired-recent-dirs)
 
 ;;; dired バッファ上で実行したときは先にそのバッファを消すように挙動を変更
 (defun helm-dired-internal (dir)

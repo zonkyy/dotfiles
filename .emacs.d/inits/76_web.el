@@ -1,8 +1,7 @@
 ;;;; スクリプト等が混ざった HTML ファイルを編集する
 
-
-;;; (package-install 'web-mode)
-(use-package web-mode)
+(use-package web-mode
+  :ensure web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))

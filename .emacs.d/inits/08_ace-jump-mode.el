@@ -1,8 +1,7 @@
 ;;;; 移動したい場所にカーソルを直接移動する
 
-
-;;; (package-install 'ace-jump-mode)
-(use-package ace-jump-mode)
+(use-package ace-jump-mode
+  :ensure ace-jump-mode)
 (global-set-key (kbd "C-o") 'ace-jump-mode)
 
 

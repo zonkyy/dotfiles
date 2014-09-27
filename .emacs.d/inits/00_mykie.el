@@ -1,6 +1,6 @@
 ;;;; コマンドマルチプレクサ
 
-;;; (package-install 'mykie)
-(require 'mykie)
+(use-package mykie
+  :ensure mykie)
 (setq mykie:use-major-mode-key-override t)
 (mykie:initialize)

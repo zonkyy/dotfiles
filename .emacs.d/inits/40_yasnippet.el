@@ -1,8 +1,7 @@
 ;;;; YASnippet の設定
 
-
-;;; (package-install 'yasnippet)
-(use-package yasnippet)
+(use-package yasnippet
+  :ensure yasnippet)
 
 (yas-global-mode 1)
 (setq yas-prompt-functions '(yas-no-prompt))

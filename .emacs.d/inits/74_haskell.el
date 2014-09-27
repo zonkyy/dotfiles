@@ -1,7 +1,7 @@
 ;;;; Haskell 用の設定
 
-
-;;; (package-install 'haskell-mode)
+(use-package haskell-mode
+  :ensure haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 

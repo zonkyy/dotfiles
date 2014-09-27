@@ -9,8 +9,8 @@
 (custom-set-variables '(recentf-save-file "~/.emacs.cache/recentf"))
 
 
-;;; (package-install 'recentf-ext)
-(use-package recentf-ext)
+(use-package recentf-ext
+  :ensure recentf-ext)
 
 (recentf-mode 1)
 (remove-hook 'kill-emacs-hook 'recentf-save-list)

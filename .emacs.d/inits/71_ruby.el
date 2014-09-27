@@ -13,12 +13,13 @@
 
 
 ;;; RSpec モード
-;;; (package-install 'rspec-mode)
-(use-package rspec-mode)
+(use-package rspec-mode
+  :ensure rspec-mode)
 
 
-;;; (package-install 'yaml-mode)
-(use-package yaml-mode)
+;;; Yaml モード
+(use-package yaml-mode
+  :ensure yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 
 
@@ -43,7 +44,6 @@
 
 
 ;;; end 等の補完
-;;; (package-install 'ruby-electric)
 ;;; delimiter の補完は行わないように，ruby-electric をロードする前に変数を変更
 (setq ruby-electric-mode-map
       (let ((map (make-sparse-keymap)))
@@ -52,7 +52,8 @@
         (define-key map [remap newline] 'ruby-electric-space/return)
         (define-key map [remap newline-and-indent] 'ruby-electric-space/return)
         map))
-(use-package ruby-electric)
+(use-package ruby-electric
+  :ensure ruby-electric)
 
 ;;; ruby-electric に足りない関数を追加
 (defun ruby-insert-end ()
@@ -63,8 +64,8 @@
 
 
 ;;; end に対応する行のハイライト
-;;; (package-install 'ruby-block)
-(use-package ruby-block)
+(use-package ruby-block
+  :ensure ruby-block)
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
@@ -72,7 +73,6 @@
 ;;; Ruby 用ツール群
 ;;; $ gem install rcodetools
 (use-package rcodetools)
-(use-package anything-rcodetools)
 
 
 ;;; デバッグツール
@@ -97,17 +97,17 @@ and source-file directory for your debugger." t)
                (modes  . '(ruby-mode))))
 
 
-;;; リファレンス (るりま) の helm インターフェイス
-;;; (install-elisp "https://raw.github.com/nabeo/anything-myrurema/helm-myrurema/helm-myrurema.el")
-(use-package helm-myrurema)
+;; ;;; リファレンス (るりま) の helm インターフェイス
+;; ;;; (install-elisp "https://raw.github.com/nabeo/anything-myrurema/helm-myrurema/helm-myrurema.el")
+;; (use-package helm-myrurema)
 
 
-;;; メソッドの定義一覧の利用
-;;; (install-elisp-from-emacswiki "back-button.el")
-;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/rdefsx.el")
-(use-package rdefsx)
-(setq rdefsx-command (expand-file-name "~/bin/rdefsx"))
-(rdefsx-auto-update-mode 1)
+;; ;;; メソッドの定義一覧の利用
+;; ;;; (install-elisp-from-emacswiki "back-button.el")
+;; ;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/rdefsx.el")
+;; (use-package rdefsx)
+;; (setq rdefsx-command (expand-file-name "~/bin/rdefsx"))
+;; (rdefsx-auto-update-mode 1)
 
 
 ;;; hooks
@@ -115,10 +115,10 @@ and source-file directory for your debugger." t)
   (flycheck-mode t)
   (ruby-electric-mode t)
   (setq ruby-electric-expand-delimiters-list nil)
-  (local-set-key (kbd "C-c C-i") 'anything-rdefsx)
+  ;; (local-set-key (kbd "C-c C-i") 'anything-rdefsx)
   (local-set-key (kbd "C-c C-r") 'helm-myrurema)
   (local-set-key (kbd "C-c C-d") 'xmp)
-  (local-set-key (kbd "C-c d") 'anything-ruby-methods)
+  ;; (local-set-key (kbd "C-c d") 'anything-ruby-methods)
   (local-set-key (kbd "C-c c") 'smart-compile)
   (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
   ;; '@', ':', '!' をシンボルとして扱う

@@ -1,18 +1,15 @@
 ;;;; Helm の基本設定
 
-
-;;; (package-install 'helm)
-;;; (package-install 'helm-migemo)
-(use-package helm)
+(use-package helm
+  :ensure helm)
 (use-package helm-config)
-(use-package helm-migemo)
+(use-package helm-migemo
+  :ensure helm-migemo)
 (use-package helm-mode)
-
-;;; (package-install 'helm-orgcard)
-(use-package helm-orgcard)
-
-;;; (package-install 'helm-descbinds)
-(use-package helm-descbinds)
+(use-package helm-orgcard
+  :ensure helm-orgcard)
+(use-package helm-descbinds
+  :ensure helm-descbinds)
 
 
 ;;; キー設定

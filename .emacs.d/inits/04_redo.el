@@ -1,8 +1,7 @@
 ;;;; redo と undo に異なるコマンドを割り当てる
 
-
-;;; (package-install 'redo+)
-(use-package redo+)
+(use-package redo+
+  :ensure redo+)
 (global-set-key (kbd "C-?") 'redo)
 ;; 過去の undo を redo しない
 (setq undo-no-redo t)

@@ -1,7 +1,8 @@
 ;;; カーソルの位置に合った改行を行う
 
 
-(use-package smart-newline)
+(use-package smart-newline
+  :ensure smart-newline)
 (global-set-key (kbd "C-m") 'smart-newline)
 
 ;;; smart-newline を使用するモード

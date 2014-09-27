@@ -1,8 +1,7 @@
 ;;;; helm インターフェイスで bm.el を利用する
 
-
-;;; (package-install 'helm-bm)
-(use-package helm-bm)
+(use-package helm-bm
+  :ensure helm-bm)
 
 ;;; セパレータが邪魔なので (multiline) を削除
 (setq helm-source-bm

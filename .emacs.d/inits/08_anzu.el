@@ -1,8 +1,7 @@
 ;;;; 検索コマンド実行中にマッチする語数と現在のマッチ位置表示
 
-
-;;; (package-install 'anzu)
-(use-package anzu)
+(use-package anzu
+  :ensure anzu)
 (global-anzu-mode +1)
 
 ;;; migemo を利用

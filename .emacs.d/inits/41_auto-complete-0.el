@@ -1,8 +1,7 @@
 ;;;; ポップアップ補完を行う Auto Complete
 
-
-;;; (package-install 'auto-complete)
-(use-package auto-complete-config)
+(use-package auto-complete-config
+  :ensure auto-complete)
 ;; ポップアップ出力時専用のキーマップを有効にするか
 (setq ac-use-menu-map t)
 ;; 大文字を入力したときのみ case を区別

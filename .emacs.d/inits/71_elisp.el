@@ -2,14 +2,14 @@
 
 
 ;;; C-c C-d で式の評価結果を注釈する
-;;; (package-install 'lispxmp)
-(use-package lispxmp)
+(use-package lispxmp
+  :ensure lispxmp)
 (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 
 
 ;;; 括弧の対応を保持して編集する
-;;; (package-install 'paredit)
-(use-package paredit)
+(use-package paredit
+  :ensure paredit)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
@@ -32,8 +32,8 @@
 
 
 ;;; 対応する括弧に同じ色を付ける
-;;; (package-install 'rainbow-delimiters)
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+  :ensure rainbow-delimiters)
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 (set-face-background 'rainbow-delimiters-unmatched-face "red")

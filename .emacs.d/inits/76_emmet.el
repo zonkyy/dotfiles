@@ -1,8 +1,7 @@
 ;;;; ZenCoding を CSS でも行う emmet-mode
 
-
-;;; (package-install 'emmet-mode)
-(use-package emmet-mode)
+(use-package emmet-mode
+  :ensure emmet-mode)
 
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)

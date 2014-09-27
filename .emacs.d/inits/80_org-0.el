@@ -1,8 +1,7 @@
 ;;;; org-mode の基本設定
 
-
-;;; (package-install 'org)
-;;; (package-install 'org-plus-contrib)
+(use-package org-plus-contrib-autoloads
+  :ensure org-plus-contrib)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (setq org-startup-truncated nil)
 (setq org-return-follows-link t)

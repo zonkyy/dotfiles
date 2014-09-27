@@ -1,9 +1,8 @@
 ;;;; 現在のカーソル位置を記憶
 
-
-;;; (install-package 'bm)
 (setq bm-restore-repository-on-load t)
-(use-package bm)
+(use-package bm
+  :ensure bm)
 
 ;;; face 設定
 (setq bm-highlight-style 'bm-highlight-only-fringe)

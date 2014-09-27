@@ -1,9 +1,9 @@
 ;;;; tmux との連携設定
 
 
-;;; (package-install 'emamux)
 ;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/tmux-doit.el")
-(use-package emamux)
+(use-package emamux
+  :ensure emamux)
 (load "tmux-doit.el")
 
 

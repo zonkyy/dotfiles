@@ -1,8 +1,7 @@
 ;;;; 一時表示バッファを C-g で簡単に消す
 
-
-;;; (package-install 'popwin)
-(use-package popwin)
+(use-package popwin
+  :ensure popwin)
 
 (popwin-mode 1)
 ;; ポップアップの大きさ

@@ -1,8 +1,7 @@
 ;;;; 使い捨てコード用のファイルを開く
 
-
-;;; (package-install 'open-junk-file)
-(use-package open-junk-file)
+(use-package open-junk-file
+  :ensure open-junk-file)
 
 ;; 別ウィンドウではなく現在のウィンドウに開く
 (setq open-junk-file-find-file-function 'find-file)

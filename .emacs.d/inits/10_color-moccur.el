@@ -1,8 +1,7 @@
 ;;;; バッファ・ディレクトリ内検索
 
-
-;;; (package-install 'color-moccur)
-(use-package color-moccur)
+(use-package color-moccur
+  :ensure color-moccur)
 (setq moccur-split-word t)
 (setq guide-key/popup-window-position 'bottom)
 (setq moccur-use-migemo t)

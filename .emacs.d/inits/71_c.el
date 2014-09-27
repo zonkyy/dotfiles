@@ -2,8 +2,8 @@
 
 
 ;;; 書式を http://www.textdrop.net/google-styleguide-ja/cppguide.xml に合わせる
-;;; (package-install 'google-c-style)
-(use-package google-c-style)
+(use-package google-c-style
+  :ensure google-c-style)
 
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))

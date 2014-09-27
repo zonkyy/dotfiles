@@ -1,8 +1,7 @@
 ;;;; 開いているファイルの種類に適したコンパイル
 
-
-;;; (package-install 'smart-compile)
-(use-package smart-compile)
+(use-package smart-compile
+  :ensure smart-compile)
 
 ;; smart-compile のコマンドをデフォルトから変更
 (add-to-list 'smart-compile-alist '("\\.rb\\'" . "ruby %f"))
