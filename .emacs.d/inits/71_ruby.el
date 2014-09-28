@@ -75,14 +75,6 @@
 (use-package rcodetools)
 
 
-;;; デバッグツール
-;;; (install-elisp "http://svn.ruby-lang.org/repos/ruby/trunk/misc/rubydb3x.el")
-(autoload 'rubydb "rubydb3x"
-  "run rubydb on program file in buffer *gud-file*.
-the directory containing file becomes the initial working directory
-and source-file directory for your debugger." t)
-
-
 ;;; aline設定
 (use-package align)
 (add-to-list 'align-rules-list
@@ -97,28 +89,13 @@ and source-file directory for your debugger." t)
                (modes  . '(ruby-mode))))
 
 
-;; ;;; リファレンス (るりま) の helm インターフェイス
-;; ;;; (install-elisp "https://raw.github.com/nabeo/anything-myrurema/helm-myrurema/helm-myrurema.el")
-;; (use-package helm-myrurema)
-
-
-;; ;;; メソッドの定義一覧の利用
-;; ;;; (install-elisp-from-emacswiki "back-button.el")
-;; ;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/rdefsx.el")
-;; (use-package rdefsx)
-;; (setq rdefsx-command (expand-file-name "~/bin/rdefsx"))
-;; (rdefsx-auto-update-mode 1)
-
-
 ;;; hooks
 (defun ruby-mode-hooks ()
   (flycheck-mode t)
   (ruby-electric-mode t)
   (setq ruby-electric-expand-delimiters-list nil)
-  ;; (local-set-key (kbd "C-c C-i") 'anything-rdefsx)
   (local-set-key (kbd "C-c C-r") 'helm-myrurema)
   (local-set-key (kbd "C-c C-d") 'xmp)
-  ;; (local-set-key (kbd "C-c d") 'anything-ruby-methods)
   (local-set-key (kbd "C-c c") 'smart-compile)
   (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
   ;; '@', ':', '!' をシンボルとして扱う
