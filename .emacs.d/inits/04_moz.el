@@ -1,8 +1,7 @@
 ;;;; Firefox を Emacs で操作する
 
-
-;;; (install-elisp "https://raw.github.com/bard/mozrepl/master/chrome/content/moz.el")
-(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+(use-package moz
+  :ensure moz)
 (moz-minor-mode t)
 
 

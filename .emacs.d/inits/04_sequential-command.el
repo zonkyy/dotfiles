@@ -1,8 +1,7 @@
 ;;;; 同じコマンドを連続実行したときの振る舞いを変更する
 
-
-;;; (auto-install-batch "sequential-command")
-(use-package sequential-command-config)
+(use-package sequential-command-config
+  :ensure sequential-command)
 
 
 ;;; sequential-command-config のセットアップを書き換え
