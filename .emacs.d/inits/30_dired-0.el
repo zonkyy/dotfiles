@@ -63,13 +63,6 @@
   (quit-window (not (delq (selected-window) (get-buffer-window-list)))))
 
 
-(defun dired-xdg-open ()
-  "Nautilus の関連付けでファイルを開く"
-  (interactive)
-  (let* ((file (dired-get-filename)))
-    (call-process "xdg-open" nil 0 nil file)))
-
-
 (defadvice dired-copy-filename-as-kill (before four-prefix activate)
   "C-u w でフルパス killing"
   (interactive "P")
@@ -94,7 +87,6 @@
   (define-key dired-mode-map (kbd "RET") 'dired-find-file-other-window)
   (define-key dired-mode-map (kbd "C-j") 'dired-dwim-find-alternate-file)
   (define-key dired-mode-map (kbd "SPC") 'dired-toggle-mark)
-  (define-key dired-mode-map (kbd "o") 'dired-xdg-open)
   (define-key dired-mode-map (kbd "q") 'dired-dwim-quit-window)
   (define-key dired-mode-map (kbd "n") 'dired-step-next-line)
   (define-key dired-mode-map (kbd "p") 'dired-step-previous-line))
