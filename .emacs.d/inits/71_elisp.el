@@ -16,12 +16,6 @@
 (add-hook 'ielm-mode-hook 'enable-paredit-mode)
 
 
-;;; M-: でミス入力しても再入力する必要をなくす
-;; (install-elisp "http://www.splode.com/~friedman/software/emacs-lisp/src/eval-expr.el")
-(use-package eval-expr)
-(eval-expr-install)
-
-
 ;;; デバッグを容易にする d マクロ
 ;;; (値を表示したい式を (d 式) に置き換える)
 (defmacro d (expr)
