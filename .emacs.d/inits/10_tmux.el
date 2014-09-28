@@ -1,10 +1,10 @@
 ;;;; tmux との連携設定
 
-
-;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/tmux-doit.el")
 (use-package emamux
   :ensure emamux)
-(load "tmux-doit.el")
+
+;;; (install-elisp "http://www.rubyist.net/~rubikitch/archive/tmux-doit.el")
+(use-package tmux-doit)
 
 
 ;;; tmux のペーストバッファを Emacs に貼り付け

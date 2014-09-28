@@ -15,7 +15,8 @@
 
 
 ;;; ポップアップで表示
-;;; (install-elisp-from-emacswiki "pos-tip.el")
+(use-package pos-tip
+  :ensure pos-tip)
 ;;; (install-elisp-from-emacswiki "sdic-inline-pos-tip.el")
 (use-package sdic-inline-pos-tip)
 (setq sdic-inline-pos-tip-timeout-auto 0)

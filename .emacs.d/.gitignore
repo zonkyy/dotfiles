@@ -3,7 +3,8 @@
 /ddskk/*
 !/ddskk/init
 
-/elisp
+/elisp/*
+!/elisp/*.el
 
 /elpa
 

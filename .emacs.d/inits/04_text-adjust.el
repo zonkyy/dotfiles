@@ -1,9 +1,11 @@
 ;;;; 文章整形
 
-
 ;;; (auto-install-from-url "http://www.rubyist.net/~rubikitch/archive/mell.el")
 ;;; (auto-install-from-url "http://www.rubyist.net/~rubikitch/archive/text-adjust.el")
+(use-package mell)
 (use-package text-adjust)
+
+
 ;; 句読点はバッファごとに設定
 (setq text-adjust-rule-kutouten nil)
 

@@ -1,6 +1,5 @@
 ;;;; 同じキーの連続入力で、入力候補を変更する
 
-
 ;;; (auto-install-from-url "https://raw.github.com/imakado/emacs-smartchr/master/smartchr.el")
 (use-package smartchr)
 
