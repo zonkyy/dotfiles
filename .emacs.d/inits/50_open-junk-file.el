@@ -14,13 +14,6 @@
        junk-file-format))
 
 
-;;; 現在のウィンドウで開く
-(defun open-junk-file-current-window ()
-  (interactive)
-  (let ((open-junk-file-find-file-function 'find-file))
-    (open-junk-file)))
-
-
 ;;; 一番新しい junk コードを開く
 (use-package em-glob)
 (defun open-last-junk-file ()
@@ -48,8 +41,6 @@
 
 
 ;;; キー割り当て
-(mykie:global-set-key "C-x j"
-  :default open-junk-file
-  :C-u     open-junk-file-current-window)
+(global-set-key (kbd "C-x j") 'open-junk-file)
 (global-set-key (kbd "C-x J") 'open-last-junk-file)
 (global-set-key (kbd "C-x M-j") 'helm-open-junk-file)
