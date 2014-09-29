@@ -12,17 +12,6 @@
                                      interpreter-mode-alist))
 
 
-;;; RSpec モード
-(use-package rspec-mode
-  :ensure rspec-mode)
-
-
-;;; Yaml モード
-(use-package yaml-mode
-  :ensure yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-
-
 ;;; インデント設定
 (setq ruby-indent-level 2)
 (setq ruby-indent-tabs-mode nil)
