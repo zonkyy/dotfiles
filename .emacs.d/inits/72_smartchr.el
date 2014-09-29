@@ -155,9 +155,6 @@
   (local-set-key (kbd "'")  (smartchr '("'`!!''" "'")))
   (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
 
-(defun smartchr-keybindings-web ()
-  (local-set-key (kbd "<") (smartchr '("<%= `!!' %>" "<% `!!' %>" "<`!!'>" "<"))))
-
 (defun smartchr-keybindings-coffee ()
   (local-set-key (kbd ";")  (smartchr '(my-smartchr-semicolon ";")))
   (local-set-key (kbd ",")  (smartchr '(", " ",")))
@@ -180,11 +177,16 @@
   (local-set-key (kbd "'")  (smartchr '("'`!!''" "'")))
   (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
 
+(defun smartchr-keybindings-web-erb ()
+  (local-set-key (kbd "<") (smartchr '("<%= `!!' %>" "<% `!!' %>" "<`!!'>" "<"))))
+
 (add-hook 'ruby-mode-hook 'smartchr-keybindings-ruby)
 (add-hook 'c-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'c++-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'awk-mode-hook 'smartchr-keybindings-awk)
 (add-hook 'php-mode-hook 'smartchr-keybindings-php)
 (add-hook 'js2-mode-hook 'smartchr-keybindings-js)
-(add-hook 'web-mode-hook 'smartchr-keybindings-web)
 (add-hook 'coffee-mode-hook 'smartchr-keybindings-coffee)
+(add-hook 'projectile-rails-mode-hook
+          '(lambda ()
+             (and (eq major-mode 'web-mode) (smartchr-keybindings-web-erb))))
