@@ -16,5 +16,6 @@
    (ruby . t)
    (screen . t)
    (sh . t)
+   (sql . t)
    (sqlite . t)
    (perl . t)))
