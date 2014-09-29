@@ -137,17 +137,17 @@
   ;;          重なってしまうこともある。
   (setq skk-tooltip-mouse-behavior 'avoid-maybe)
 
-  ;; tooltip 表示の際のマウスポインタを変更して遊んでみる
-  ;; 注) この設定は X Window System 上の GNU Emacs でないと利用できません。
-  (defadvice skk-tooltip-show-at-point (around set-pointer activate)
-    (let ((shape x-pointer-shape))
-      (require 'avoid)
-      (mouse-avoidance-set-pointer-shape (if (ad-get-arg 1)
-                                             x-pointer-pencil
-                                           x-pointer-hand1))
-      (unwind-protect
-          ad-do-it
-        (mouse-avoidance-set-pointer-shape shape))))
+  ;; ;; tooltip 表示の際のマウスポインタを変更して遊んでみる
+  ;; ;; 注) この設定は X Window System 上の GNU Emacs でないと利用できません。
+  ;; (defadvice skk-tooltip-show-at-point (around set-pointer activate)
+  ;;   (let ((shape x-pointer-shape))
+  ;;     (require 'avoid)
+  ;;     (mouse-avoidance-set-pointer-shape (if (ad-get-arg 1)
+  ;;                                            x-pointer-pencil
+  ;;                                          x-pointer-hand1))
+  ;;     (unwind-protect
+  ;;         ad-do-it
+  ;;       (mouse-avoidance-set-pointer-shape shape))))
   )
 
 ;; ;; [残り 99++]
@@ -174,7 +174,7 @@
   ;; 変数 `skk-treat-candidate-appearance-function' を利用して自前で候補に
   ;; 色を付ける場合はこの変数を nil に設定する。
   (setq skk-inline-show-face nil)
-  (setq skk-inline-show-background-color "gray15"))
+  (setq skk-inline-show-background-color "black"))
 
 ;; 候補表示のルックスに関する高度な設定
 ;;
