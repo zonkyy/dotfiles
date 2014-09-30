@@ -7,6 +7,7 @@
 
 ;;; フォント設定
 (set-frame-font "ricty-10.5")
+(set-fontset-font t 'unicode "ricty" nil 'prepend)
 
 
 ;;; フレームサイズ・位置・色などの設定
