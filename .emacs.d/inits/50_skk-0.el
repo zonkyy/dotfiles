@@ -1,8 +1,10 @@
 ;;;; SKK モードの基本設定
 
-
 (setq skk-user-directory "~/.emacs.d/ddskk/")
-(use-package skk-autoloads :load-path "/usr/local/share/emacs/24.3/site-lisp/skk")
+
+;;; DDSKK のロードパスを環境変数 DDSKK-LOAD-PATH から取得
+(use-package skk-autoloads
+  :load-path ,(exec-path-from-shell-copy-env "DDSKK_LOAD_PATH"))
 
 
 ;;; isearch では SKK を使用しない for migemo
