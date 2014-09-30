@@ -1,150 +1,150 @@
 ;;
-;; text-adjust.el ÆüËÜ¸ì¤ÎÊ¸¾Ï¤òÀ°·Á¤¹¤ë. 
+;; text-adjust.el æ—¥æœ¬èªã®æ–‡ç« ã‚’æ•´å½¢ã™ã‚‹. 
 ;;
-;;  By ¾®¾¾¹°¹¬  Hiroyuki Komatsu <komatsu@taiyaki.org>
+;;  By å°æ¾å¼˜å¹¸  Hiroyuki Komatsu <komatsu@taiyaki.org>
 ;;
-;; ¤³¤Î¥³¡¼¥É¤Ï GPL ¤Ë½¾¤Ã¤ÆÇÛÉÛ²ÄÇ½¤Ç¤¹. (This is GPLed software.)
+;; ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ GPL ã«å¾“ã£ã¦é…å¸ƒå¯èƒ½ã§ã™. (This is GPLed software.)
 ;; 
-;; ¢£¥¤¥ó¥¹¥È¡¼¥ëÊıË¡
-;; 1) Å¬Åö¤Ê¥Ç¥£¥ì¥¯¥È¥ê¤Ë¤³¤Î¥Õ¥¡¥¤¥ë¤È mell.el ¤ò¤ª¤¯.
-;;    (~/elisp/ Æâ¤Ë¤ª¤¤¤¿¤È¤¹¤ë). mell.el ¤Î°ì¸µÇÛÉÛ¸µ¤Ï
-;;    http://www.taiyaki.org/elisp/mell/ ¤Ç¤¹.
+;; â– ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•
+;; 1) é©å½“ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¨ mell.el ã‚’ãŠã.
+;;    (~/elisp/ å†…ã«ãŠã„ãŸã¨ã™ã‚‹). mell.el ã®ä¸€å…ƒé…å¸ƒå…ƒã¯
+;;    http://www.taiyaki.org/elisp/mell/ ã§ã™.
 ;;
-;; 2) .emacs ¤Ë¼¡¤Î 2 ¹Ô¤òÄÉ²Ã¤¹¤ë.
+;; 2) .emacs ã«æ¬¡ã® 2 è¡Œã‚’è¿½åŠ ã™ã‚‹.
 ;; (setq load-path (cons (expand-file-name "~/elisp") load-path))
 ;; (load "text-adjust")
 ;; 
-;; ¢£»È¤¤Êı
-;; 1) M-x text-adjust ¤ò¼Â¹Ô¤¹¤ë¤ÈÊ¸¾Ï¤¬À°·Á¤µ¤ì¤ë.
-;; 2) »ÈÍÑ²ÄÇ½¤Ê´Ø¿ô¤Î³µÍ×.
-;;     text-adjust-codecheck : È¾³Ñ¥«¥Ê, µ¬³Ê³°Ê¸»ú¤ò¡Ö¢®¡×¤ËÃÖ¤­´¹¤¨¤ë.
-;;     text-adjust-hankaku   : Á´³Ñ±Ñ¿ôÊ¸»ú¤òÈ¾³Ñ¤Ë¤¹¤ë.
-;;     text-adjust-kutouten  : ¶çÆÉÅÀ¤ò¡Ö, ¡×¡Ö. ¡×¤ËÃÖ¤­´¹¤¨¤ë.
-;;     text-adjust-space     : Á´³ÑÊ¸»ú¤ÈÈ¾³ÑÊ¸»ú¤Î´Ö¤Ë¶õÇò¤òÆş¤ì¤ë.
-;;     text-adjust           : ¤³¤ì¤é¤ò¤¹¤Ù¤Æ¼Â¹Ô¤¹¤ë.
-;;     text-adjust-fill      : ¶çÆÉÅÀÍ¥Àè¤Ç, fill-region ¤ò¤¹¤ë.
-;;    Å¬±şÈÏ°Ï¤Ï¥ê¡¼¥¸¥ç¥ó¤¬¤¢¤ë¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò,
-;;    ¤Ê¤±¤ì¤Ğ mark-paragraph ¤ÇÆÀ¤é¤ì¤¿ÃÍ. 
+;; â– ä½¿ã„æ–¹
+;; 1) M-x text-adjust ã‚’å®Ÿè¡Œã™ã‚‹ã¨æ–‡ç« ãŒæ•´å½¢ã•ã‚Œã‚‹.
+;; 2) ä½¿ç”¨å¯èƒ½ãªé–¢æ•°ã®æ¦‚è¦.
+;;     text-adjust-codecheck : åŠè§’ã‚«ãƒŠ, è¦æ ¼å¤–æ–‡å­—ã‚’ã€Œã€“ã€ã«ç½®ãæ›ãˆã‚‹.
+;;     text-adjust-hankaku   : å…¨è§’è‹±æ•°æ–‡å­—ã‚’åŠè§’ã«ã™ã‚‹.
+;;     text-adjust-kutouten  : å¥èª­ç‚¹ã‚’ã€Œ, ã€ã€Œ. ã€ã«ç½®ãæ›ãˆã‚‹.
+;;     text-adjust-space     : å…¨è§’æ–‡å­—ã¨åŠè§’æ–‡å­—ã®é–“ã«ç©ºç™½ã‚’å…¥ã‚Œã‚‹.
+;;     text-adjust           : ã“ã‚Œã‚‰ã‚’ã™ã¹ã¦å®Ÿè¡Œã™ã‚‹.
+;;     text-adjust-fill      : å¥èª­ç‚¹å„ªå…ˆã§, fill-region ã‚’ã™ã‚‹.
+;;    é©å¿œç¯„å›²ã¯ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ãŒã‚ã‚‹å ´åˆã¯ãã®ç¯„å›²ã‚’,
+;;    ãªã‘ã‚Œã° mark-paragraph ã§å¾—ã‚‰ã‚ŒãŸå€¤. 
 ;;
-;;     *-region : ¾åµ­´Ø¿ô¤ò¥ê¡¼¥¸¥ç¥óÆâ¤Ç¼Â¹Ô¤¹¤ë.
-;;     *-buffer : ¾åµ­´Ø¿ô¤ò¥Ğ¥Ã¥Õ¥¡Æâ¤Ç¼Â¹Ô¤¹¤ë.
+;;     *-region : ä¸Šè¨˜é–¢æ•°ã‚’ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§å®Ÿè¡Œã™ã‚‹.
+;;     *-buffer : ä¸Šè¨˜é–¢æ•°ã‚’ãƒãƒƒãƒ•ã‚¡å†…ã§å®Ÿè¡Œã™ã‚‹.
 ;; 
 ;;
-;; ¢£Tips
-;; 1) ¼¡¤Î¤è¤¦¤ËÀßÄê¤¹¤ë¤È, text-adjust-fill-region ¼Â¹Ô»ş¤Ë, 
-;;  º¸¥Ş¡¼¥¸¥ó¤¬¹ÍÎ¸¤µ¤ì¤ë.
+;; â– Tips
+;; 1) æ¬¡ã®ã‚ˆã†ã«è¨­å®šã™ã‚‹ã¨, text-adjust-fill-region å®Ÿè¡Œæ™‚ã«, 
+;;  å·¦ãƒãƒ¼ã‚¸ãƒ³ãŒè€ƒæ…®ã•ã‚Œã‚‹.
 ;;  | (setq adaptive-fill-regexp "[ \t]*")
 ;;  | (setq adaptive-fill-mode t)
 ;;
-;; 2) ¡©¡ª¤äÁ´³Ñ¶õÇò¤òÈ¾³Ñ¤ØÊÑ´¹¤·¤Ê¤¤¤è¤¦¤Ë¤¹¤ë¤Ë¤Ï.
-;;  text-adjust-hankaku-except ¤ËÊ¸»ú¤òÄÉ²Ã¤¹¤ì¤Ğ²ÄÇ½¤Ë¤Ê¤ê¤Ş¤¹.
-;;  | (setq text-adjust-hankaku-except "¡¡¡©¡ª¡÷¡¼¡Á¡¢¡¤¡£¡¥")
+;; 2) ï¼Ÿï¼ã‚„å…¨è§’ç©ºç™½ã‚’åŠè§’ã¸å¤‰æ›ã—ãªã„ã‚ˆã†ã«ã™ã‚‹ã«ã¯.
+;;  text-adjust-hankaku-except ã«æ–‡å­—ã‚’è¿½åŠ ã™ã‚Œã°å¯èƒ½ã«ãªã‚Šã¾ã™.
+;;  | (setq text-adjust-hankaku-except "ã€€ï¼Ÿï¼ï¼ ãƒ¼ã€œã€ï¼Œã€‚ï¼")
 ;;
 
 (require 'mell)
 
-(defvar text-adjust-hankaku-except "¡÷¡¼¡Á¡¢¡¤¡£¡¥"
-  "text-adjust-hankaku ¤ÇÈ¾³Ñ¤Ë¤µ¤ì¤¿¤¯¤Ê¤¤Ê¸»úÎó. Àµµ¬É½¸½¤Ç¤Ï¤Ê¤¤.")
+(defvar text-adjust-hankaku-except "ï¼ ãƒ¼ã€œã€ï¼Œã€‚ï¼"
+  "text-adjust-hankaku ã§åŠè§’ã«ã•ã‚ŒãŸããªã„æ–‡å­—åˆ—. æ­£è¦è¡¨ç¾ã§ã¯ãªã„.")
 
-;; text-adjust-rule ¤Î¥Õ¥©¡¼¥Ş¥Ã¥È¤Ï
-;; (("º¸Ã¼Ê¸»úÎó" "ÂĞ¾İÊ¸»úÎó" "±¦Ã¼Ê¸»úÎó") "ÊÑ´¹Ê¸»úÎó") ¤È¤¤¤¦¹½À®¤Î
-;; ¥ê¥¹¥È¤Ç¤¹. "º¸Ã¼Ê¸»úÎó", "ÂĞ¾İÊ¸»úÎó", "±¦Ã¼Ê¸»úÎó" ¤ÏÀµµ¬É½¸½¤Ç
-;; µ­½Ò²ÄÇ½¤Ç¤³¤Î 3 ¤Ä ¤òÏ¢·ë¤·¤¿Ê¸»úÎó¤Ë¥Ş¥Ã¥Á¤·¤¿¸Ä½ê¤òÊÑ´¹ÂĞ¾İ¤È¤·, 
-;; "ÂĞ¾İÊ¸»úÎó" ¤ò "ÊÑ´¹Ê¸»úÎó" ¤ØÊÑ´¹¤·¤Ş¤¹.
+;; text-adjust-rule ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯
+;; (("å·¦ç«¯æ–‡å­—åˆ—" "å¯¾è±¡æ–‡å­—åˆ—" "å³ç«¯æ–‡å­—åˆ—") "å¤‰æ›æ–‡å­—åˆ—") ã¨ã„ã†æ§‹æˆã®
+;; ãƒªã‚¹ãƒˆã§ã™. "å·¦ç«¯æ–‡å­—åˆ—", "å¯¾è±¡æ–‡å­—åˆ—", "å³ç«¯æ–‡å­—åˆ—" ã¯æ­£è¦è¡¨ç¾ã§
+;; è¨˜è¿°å¯èƒ½ã§ã“ã® 3 ã¤ ã‚’é€£çµã—ãŸæ–‡å­—åˆ—ã«ãƒãƒƒãƒã—ãŸå€‹æ‰€ã‚’å¤‰æ›å¯¾è±¡ã¨ã—, 
+;; "å¯¾è±¡æ–‡å­—åˆ—" ã‚’ "å¤‰æ›æ–‡å­—åˆ—" ã¸å¤‰æ›ã—ã¾ã™.
 ;;
-;; ¢£Îã1
-;; (("ÃËÅò" " " "½÷Åò")   "|ÊÉ|")
-;; ÊÑ´¹Á° = "ÃËÅò ½÷Åò",  ÊÑ´¹¸å = "ÃËÅò|ÊÉ|½÷Åò"
+;; â– ä¾‹1
+;; (("ç”·æ¹¯" " " "å¥³æ¹¯")   "|å£|")
+;; å¤‰æ›å‰ = "ç”·æ¹¯ å¥³æ¹¯",  å¤‰æ›å¾Œ = "ç”·æ¹¯|å£|å¥³æ¹¯"
 ;;
-;; ¢£Îã2
+;; â– ä¾‹2
 ;; ((("\\cj"        "" "[0-9a-zA-Z]")   " ")
 ;;  (("[0-9a-zA-Z]" "" "\\cj")          " "))
-;; ÊÑ´¹Á° = "You¤ÏShoooock!",  ÊÑ´¹¸å = "You ¤Ï Shoooock!"
+;; å¤‰æ›å‰ = "Youã¯Shoooock!",  å¤‰æ›å¾Œ = "You ã¯ Shoooock!"
 ;;
-;; "ÊÑ´¹Ê¸»úÎó" ¤Ç¤Ï "{", "}" ¤òÍÑ¤¤¤¿ÆÈ¼«µ­Ë¡¤Ë¤è¤Ã¤ÆÂĞ¾İÊ¸»úÎó¤ò
-;; »²¾È¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¹. "{1}", "{2}", "{3}" ¤Ï¤½¤ì¤¾¤ì½ç¤Ë "º¸Ã¼Ê¸»úÎó",
-;; "ÂĞ¾İÊ¸»úÎó", "±¦Ã¼Ê¸»úÎó" ¤ÎÁ´ÂÎ¤òÉ½¤ï¤·, "{2-3}" ¤Ï "ÂĞ¾İÊ¸»úÎó" ¤Î
-;; 3 ÈÖÌÜ¤ÎÀµµ¬É½¸½¤Î³ç¸Ì¤ËÂĞ±ş¤·¤Ş¤¹. ¤Ş¤¿, "{1}" ¤È "{1-0}" ¤ÏÆ±ÃÍ¤Ç¤¹.
+;; "å¤‰æ›æ–‡å­—åˆ—" ã§ã¯ "{", "}" ã‚’ç”¨ã„ãŸç‹¬è‡ªè¨˜æ³•ã«ã‚ˆã£ã¦å¯¾è±¡æ–‡å­—åˆ—ã‚’
+;; å‚ç…§ã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™. "{1}", "{2}", "{3}" ã¯ãã‚Œãã‚Œé †ã« "å·¦ç«¯æ–‡å­—åˆ—",
+;; "å¯¾è±¡æ–‡å­—åˆ—", "å³ç«¯æ–‡å­—åˆ—" ã®å…¨ä½“ã‚’è¡¨ã‚ã—, "{2-3}" ã¯ "å¯¾è±¡æ–‡å­—åˆ—" ã®
+;; 3 ç•ªç›®ã®æ­£è¦è¡¨ç¾ã®æ‹¬å¼§ã«å¯¾å¿œã—ã¾ã™. ã¾ãŸ, "{1}" ã¨ "{1-0}" ã¯åŒå€¤ã§ã™.
 ;;
-;; ¢£Îã3
-;; (("·î" "²Ğ¿åÌÚ" "¶â") "{1}{2}{3}")
-;; ÊÑ´¹Á° = "·î²Ğ¿åÌÚ¶â", ÊÑ´¹¸å = "·î·î²Ğ¿åÌÚ¶â¶â"
+;; â– ä¾‹3
+;; (("æœˆ" "ç«æ°´æœ¨" "é‡‘") "{1}{2}{3}")
+;; å¤‰æ›å‰ = "æœˆç«æ°´æœ¨é‡‘", å¤‰æ›å¾Œ = "æœˆæœˆç«æ°´æœ¨é‡‘é‡‘"
 ;;
-;; ¢£Îã4
-;; (("" "\\(.¥ó\\)\\(.¥ó\\)" "") "{2-2}{2-1}")
-;; ÊÑ´¹Á° = "ÌëÌÀ¤±¤Î¥¬¥ó¥Ş¥ó", ÊÑ´¹¸å = "ÌëÌÀ¤±¤Î¥Ş¥ó¥¬¥ó"
+;; â– ä¾‹4
+;; (("" "\\(.ãƒ³\\)\\(.ãƒ³\\)" "") "{2-2}{2-1}")
+;; å¤‰æ›å‰ = "å¤œæ˜ã‘ã®ã‚¬ãƒ³ãƒãƒ³", å¤‰æ›å¾Œ = "å¤œæ˜ã‘ã®ãƒãƒ³ã‚¬ãƒ³"
 ;;
-;; text-adjust-mode-skip-rule ¤Ï³Æ¥â¡¼¥É¤ËÆÃ²½¤·¤¿ÆÃ¼ìÊÑ´¹¥ë¡¼¥ë¤Ç, 
-;; ¼ç¤ËÊÑ´¹¤ò¤µ¤»¤¿¤¯¤Ê¤¤¸Ä½ê¤ò¥¹¥­¥Ã¥×¤¹¤ëÌÜÅª¤ÇÍÑ°Õ¤µ¤ì¤Æ¤¤¤Ş¤¹.
+;; text-adjust-mode-skip-rule ã¯å„ãƒ¢ãƒ¼ãƒ‰ã«ç‰¹åŒ–ã—ãŸç‰¹æ®Šå¤‰æ›ãƒ«ãƒ¼ãƒ«ã§, 
+;; ä¸»ã«å¤‰æ›ã‚’ã•ã›ãŸããªã„å€‹æ‰€ã‚’ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ç›®çš„ã§ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™.
 ;; text-adjust-rule-space, text-adjust-rule-kutouten, 
-;; text-adjust-rule-codecheck ¤Î¤½¤ì¤¾¤ì¤ÎÀèÆ¬¤ËÄÉ²Ã¤µ¤ì¤¿¤Î¤Á, ¼Â¹Ô¤µ¤ì¤Ş¤¹.
+;; text-adjust-rule-codecheck ã®ãã‚Œãã‚Œã®å…ˆé ­ã«è¿½åŠ ã•ã‚ŒãŸã®ã¡, å®Ÿè¡Œã•ã‚Œã¾ã™.
 
 
-;; ÆüËÜ¸ìÍÑÀµµ¬É½¸½ (M-x describe-category ¤ò»²¾È)
-;\\cK ¥«¥¿¥«¥Ê
-;\\cC ´Á»ú
-;\\cH ¤Ò¤é¤¬¤Ê
-;\\cS Á´³Ñµ­¹æ
-;\\cj ÆüËÜ¸ì (¾åµ­Á´Éô)
-;\\ck È¾³Ñ¥«¥Ê
+;; æ—¥æœ¬èªç”¨æ­£è¦è¡¨ç¾ (M-x describe-category ã‚’å‚ç…§)
+;\\cK ã‚«ã‚¿ã‚«ãƒŠ
+;\\cC æ¼¢å­—
+;\\cH ã²ã‚‰ãŒãª
+;\\cS å…¨è§’è¨˜å·
+;\\cj æ—¥æœ¬èª (ä¸Šè¨˜å…¨éƒ¨)
+;\\ck åŠè§’ã‚«ãƒŠ
 (defvar text-adjust-rule-space 
   '((("\\cj\\|)" "" "[[(0-9a-zA-Z+]")   " ")
     (("[])/!?0-9a-zA-Z+]" "" "(\\|\\cj") " "))
-  "ÃÖ´¹¤¹¤ë¶õÇò¤ÎÊÑ´¹¥ë¡¼¥ë.")
+  "ç½®æ›ã™ã‚‹ç©ºç™½ã®å¤‰æ›ãƒ«ãƒ¼ãƒ«.")
 
 (defvar text-adjust-rule-kutouten-hperiod
-  '((("\\cA\\|\\ca" "¡¥" "\\cA\\|\\ca")   ".")
-    (("" "[¡¢¡¤] ?\\([)¡×¡Ù]?\\) *" "$")  "{2-1},")
-    (("" "[¡¢¡¤] ?\\([)¡×¡Ù]?\\) ?" "")   "{2-1}, ")
-    (("" "[¡£¡¥] ?\\([)¡×¡Ù]?\\) *" "$")  "{2-1}.")
-    (("" "[¡£¡¥] ?\\([)¡×¡Ù]?\\) ?" "")   "{2-1}. ")
+  '((("\\cA\\|\\ca" "ï¼" "\\cA\\|\\ca")   ".")
+    (("" "[ã€ï¼Œ] ?\\([)ã€ã€]?\\) *" "$")  "{2-1},")
+    (("" "[ã€ï¼Œ] ?\\([)ã€ã€]?\\) ?" "")   "{2-1}, ")
+    (("" "[ã€‚ï¼] ?\\([)ã€ã€]?\\) *" "$")  "{2-1}.")
+    (("" "[ã€‚ï¼] ?\\([)ã€ã€]?\\) ?" "")   "{2-1}. ")
     )
-  "¡Ö,.¡×ÍÑ, ¶çÆÉÅÀ¤ÎÊÑ´¹¥ë¡¼¥ë.")
+  "ã€Œ,.ã€ç”¨, å¥èª­ç‚¹ã®å¤‰æ›ãƒ«ãƒ¼ãƒ«.")
 
 (defvar text-adjust-rule-kutouten-zperiod
-  '((("" "¡¢ ?\\([)¡×¡Ù]?\\)" "")     "{2-1}¡¤")
-    (("" "¡£ ?\\([)¡×¡Ù]?\\)" "")     "{2-1}¡¥")
-    (("\\cj" ", ?\\([)¡×¡Ù]?\\)" "")   "{2-1}¡¤")
-    (("\\cj" "\\. ?\\([)¡×¡Ù]?\\)" "") "{2-1}¡¥"))
-  "¡Ö¡¤¡¥¡×ÍÑ, ¶çÆÉÅÀ¤ÎÊÑ´¹¥ë¡¼¥ë.")
+  '((("" "ã€ ?\\([)ã€ã€]?\\)" "")     "{2-1}ï¼Œ")
+    (("" "ã€‚ ?\\([)ã€ã€]?\\)" "")     "{2-1}ï¼")
+    (("\\cj" ", ?\\([)ã€ã€]?\\)" "")   "{2-1}ï¼Œ")
+    (("\\cj" "\\. ?\\([)ã€ã€]?\\)" "") "{2-1}ï¼"))
+  "ã€Œï¼Œï¼ã€ç”¨, å¥èª­ç‚¹ã®å¤‰æ›ãƒ«ãƒ¼ãƒ«.")
 
 (defvar text-adjust-rule-kutouten-zkuten
-  '((("" "¡¤ ?\\([)¡×¡Ù]?\\)" "")     "{2-1}¡¢")
-    (("" "¡¥ ?\\([)¡×¡Ù]?\\)" "")     "{2-1}¡£")
-    (("\\cj" ", ?\\([)¡×¡Ù]?\\)" "")   "{2-1}¡¢")
-    (("\\cj" "\\. ?\\([)¡×¡Ù]?\\)" "") "{2-1}¡£"))
-  "¡Ö¡¢¡£¡×ÍÑ, ¶çÆÉÅÀ¤ÎÊÑ´¹¥ë¡¼¥ë.")
+  '((("" "ï¼Œ ?\\([)ã€ã€]?\\)" "")     "{2-1}ã€")
+    (("" "ï¼ ?\\([)ã€ã€]?\\)" "")     "{2-1}ã€‚")
+    (("\\cj" ", ?\\([)ã€ã€]?\\)" "")   "{2-1}ã€")
+    (("\\cj" "\\. ?\\([)ã€ã€]?\\)" "") "{2-1}ã€‚"))
+  "ã€Œã€ã€‚ã€ç”¨, å¥èª­ç‚¹ã®å¤‰æ›ãƒ«ãƒ¼ãƒ«.")
 
 (defvar text-adjust-rule-kutouten text-adjust-rule-kutouten-hperiod
-  "ÃÖ´¹¤¹¤ë¶çÆÉÅÀ¤ÎÊÑ´¹¥ë¡¼¥ë.
-nil ¤Î¾ì¹ç, ¥Ğ¥Ã¥Õ¥¡¤´¤È¤ËÁªÂò²ÄÇ½.")
+  "ç½®æ›ã™ã‚‹å¥èª­ç‚¹ã®å¤‰æ›ãƒ«ãƒ¼ãƒ«.
+nil ã®å ´åˆ, ãƒãƒƒãƒ•ã‚¡ã”ã¨ã«é¸æŠå¯èƒ½.")
 
 (defvar text-adjust-rule-codecheck
-  '((("" "\\ck\\|\\c@" "") "¢®")
+  '((("" "\\ck\\|\\c@" "") "ã€“")
     ))
 
 (defvar text-adjust-mode-skip-rule '((sgml-mode . ((("<" "[^>]*" ">") "{2}")
 						   ))))
 
-;(defvar text-adjust-fill-regexp ", \\|\\. \\|! \\|\\? \\|¤ò\\| ")
-;(defvar text-adjust-fill-regexp "[,.!?] \\|[¤ò ]"
-(defvar text-adjust-fill-regexp "[,!] \\|[¤ò ]"
-  "¤³¤ÎÀµµ¬É½¸½¤Î¼¡¤ÇÍ¥Àè¤·¤Æ²ş¹Ô¤¹¤ë.")
+;(defvar text-adjust-fill-regexp ", \\|\\. \\|! \\|\\? \\|ã‚’\\| ")
+;(defvar text-adjust-fill-regexp "[,.!?] \\|[ã‚’ ]"
+(defvar text-adjust-fill-regexp "[,!] \\|[ã‚’ ]"
+  "ã“ã®æ­£è¦è¡¨ç¾ã®æ¬¡ã§å„ªå…ˆã—ã¦æ”¹è¡Œã™ã‚‹.")
 (defvar text-adjust-fill-start 60
-  "³Æ¹Ô¤È¤â, ¤³¤ÎÃÍ¤«¤é fill-column ¤Ş¤Ç¤ÎÃÍ¤Ş¤Ç¤¬\
- text-adjust-fill ¤ÎÍ­¸úÈÏ°Ï.")
+  "å„è¡Œã¨ã‚‚, ã“ã®å€¤ã‹ã‚‰ fill-column ã¾ã§ã®å€¤ã¾ã§ãŒ\
+ text-adjust-fill ã®æœ‰åŠ¹ç¯„å›².")
 
 (global-set-key [(meta zenkaku-hankaku)] 'text-adjust)
 
 
 ;;;; text-adjust
 (defun text-adjust (&optional force-kutouten-rule)
-  "ÆüËÜ¸ìÊ¸¾Ï¤òÀ°·Á¤¹¤ë.
-³Æ´Ø¿ô text-adjust-codecheck, text-adjust-hankaku, text-adjust-kutouten,
-text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
-±Ñ¿ô»ú¸ò¤¸¤ê¤ÎÆüËÜ¸ìÊ¸¾Ï¤òÀ°·Á¤¹¤ë.
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+  "æ—¥æœ¬èªæ–‡ç« ã‚’æ•´å½¢ã™ã‚‹.
+å„é–¢æ•° text-adjust-codecheck, text-adjust-hankaku, text-adjust-kutouten,
+text-adjust-space ã‚’é †ã«å®Ÿè¡Œã™ã‚‹ã“ã¨ã«ã‚ˆã‚Š,
+è‹±æ•°å­—äº¤ã˜ã‚Šã®æ—¥æœ¬èªæ–‡ç« ã‚’æ•´å½¢ã™ã‚‹.
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive "P")
   (save-excursion
     (or (transient-region-active-p)
@@ -152,12 +152,12 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
     (text-adjust-region (region-beginning) (region-end) force-kutouten-rule)))
 
 (defun text-adjust-buffer (&optional force-kutouten-rule)
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "P")
   (text-adjust-region (point-min) (point-max) force-kutouten-rule))
 
 (defun text-adjust-region (from to &optional force-kutouten-rule) 
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ô text-adjust ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•° text-adjust ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r\nP")
   (text-adjust-kutouten-read-rule force-kutouten-rule)
   (save-restriction
@@ -171,18 +171,18 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
 
 
 ;;;; text-adjust-codecheck
-;;;; jischeck.el ¤è¤ê°úÍÑ
+;;;; jischeck.el ã‚ˆã‚Šå¼•ç”¨
 ;;
 ;; jischeck.el 19960827+19970214+19980406
 ;;     By TAMURA Kent <kent@muraoka.info.waseda.ac.jp>
 ;;      + akira yamada <akira@linux.or.jp>
 ;;      + Takashi Ishioka <ishioka@dad.eec.toshiba.co.jp>
 
-;; JIS X 0208-1983 ¤ÇÌµ¸ú¤ÊÈÏ°Ï(¿ôÃÍ¤Ï ISO-2022-JP ¤Ç¤ÎÃÍ):
-;;  1,2 ByteÌÜ¤¬ 0x00-0x20, 0x7f-0xff
-;;  1 ByteÌÜ:  0x29-0x2f, 0x75-0x7e
+;; JIS X 0208-1983 ã§ç„¡åŠ¹ãªç¯„å›²(æ•°å€¤ã¯ ISO-2022-JP ã§ã®å€¤):
+;;  1,2 Byteç›®ãŒ 0x00-0x20, 0x7f-0xff
+;;  1 Byteç›®:  0x29-0x2f, 0x75-0x7e
 ;;
-;; ºÙ¤«¤¤¤È¤³¤í¤Ç¤Ï:
+;; ç´°ã‹ã„ã¨ã“ã‚ã§ã¯:
 ;;  222f-2239, 2242-2249, 2251-225b, 226b-2271, 227a-227d
 ;;  2321-232f, 233a-2340, 235b-2360, 237b-237e
 ;;  2474-247e,
@@ -193,9 +193,9 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
 ;;  4f54-4f7e,
 ;;  7425-747e,
 ;;
-;;;; °úÍÑ½ª¤ï¤ê.
+;;;; å¼•ç”¨çµ‚ã‚ã‚Š.
 
-;;;; 1 byte ÌÜ¤¬ 0x29-0x2f, 0x75-0x7e ¤ÎÊ¸»ú¤Ë¤Î¤ßÂĞ±ş.
+;;;; 1 byte ç›®ãŒ 0x29-0x2f, 0x75-0x7e ã®æ–‡å­—ã«ã®ã¿å¯¾å¿œ.
 (or (if running-xemacs
 	(defined-category-p ?@)
       (category-docstring ?@))
@@ -209,10 +209,10 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
 	      (if (= page 47) 117 (1+ page))))))
 
 (defun text-adjust-codecheck (&optional from to)
-  "Ìµ¸ú¤ÊÊ¸»ú¥³¡¼¥É¤ò text-adjust-codecheck-alarm ¤ËÃÖ¤­´¹¤¨¤ë.
+  "ç„¡åŠ¹ãªæ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’ text-adjust-codecheck-alarm ã«ç½®ãæ›ãˆã‚‹.
 
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive)
   (save-excursion
     (or (transient-region-active-p)
@@ -220,22 +220,22 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
     (text-adjust-codecheck-region (region-beginning) (region-end))))
 
 (defun text-adjust-codecheck-buffer ()
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust-jischeck ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust-jischeck ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive)
   (text-adjust-codecheck-region (point-min) (point-max)))
 
 (defun text-adjust-codecheck-region (from to)
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ô text-adjust-jischeck ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•° text-adjust-jischeck ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r")
   (text-adjust--replace text-adjust-rule-codecheck from to))
 
 
 ;;;; text-adjust-hankaku
 (defun text-adjust-hankaku ()
-  "Á´³Ñ±Ñ¿ôÊ¸»ú¤òÈ¾³Ñ¤Ë¤¹¤ë.
+  "å…¨è§’è‹±æ•°æ–‡å­—ã‚’åŠè§’ã«ã™ã‚‹.
 
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive)
   (save-excursion
     (or (transient-region-active-p)
@@ -243,17 +243,17 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
     (text-adjust-hankaku-region (region-beginning) (region-end))))
 
 (defun text-adjust-hankaku-buffer ()
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust-hankaku ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust-hankaku ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive)
   (text-adjust-hankaku-region (point-min) (point-max)))
 
 (defun text-adjust-hankaku-region (from to) 
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ô text-adjust-hankaku ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•° text-adjust-hankaku ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r")
   (require 'japan-util)
   (save-excursion
     (let ((tmp-table (text-adjust--copy-char-table char-code-property-table)))
-      (text-adjust--modify-char-table ?¡¡ (list 'ascii "  "))
+      (text-adjust--modify-char-table ?ã€€ (list 'ascii "  "))
       (mapcar '(lambda (c) (text-adjust--modify-char-table c nil))
        (string-to-list text-adjust-hankaku-except))
       (japanese-hankaku-region from to t)
@@ -273,12 +273,12 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
 
 ;;;; text-adjust-kutouten
 (defun text-adjust-kutouten (&optional forcep)
-  "¶çÆÉÅÀ¤òÊÑ´¹¤¹¤ë.
-¶çÅÀ¤ò text-adjust-kuten-from ¤«¤é text-adjust-kuten-to ¤ÎÃÍ¤Ë,
-ÆÉÅÀ¤ò text-adjust-touten-from ¤«¤é text-adjust-touten-to ¤ÎÃÍ¤ËÊÑ´¹¤¹¤ë.
+  "å¥èª­ç‚¹ã‚’å¤‰æ›ã™ã‚‹.
+å¥ç‚¹ã‚’ text-adjust-kuten-from ã‹ã‚‰ text-adjust-kuten-to ã®å€¤ã«,
+èª­ç‚¹ã‚’ text-adjust-touten-from ã‹ã‚‰ text-adjust-touten-to ã®å€¤ã«å¤‰æ›ã™ã‚‹.
 
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive)
   (save-excursion
     (or (transient-region-active-p)
@@ -286,18 +286,18 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
     (text-adjust-kutouten-region (region-beginning) (region-end) forcep)))
 
 (defun text-adjust-kutouten-buffer (&optional forcep)
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust-kutouten ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust-kutouten ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "P")
   (text-adjust-kutouten-region (point-min) (point-max) forcep))
 
 (defun text-adjust-kutouten-region (from to &optional forcep)
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ô text-adjust-kutouten ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•° text-adjust-kutouten ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r\nP")
   (text-adjust-kutouten-read-rule forcep)
   (text-adjust--replace text-adjust-rule-kutouten from to))
 
 (defun text-adjust-kutouten-read-rule (&optional forcep)
-  "ÊÑ´¹¸å¤Î¶çÆÉÅÀ¤òÁªÂò¤¹¤ë."
+  "å¤‰æ›å¾Œã®å¥èª­ç‚¹ã‚’é¸æŠã™ã‚‹."
   (interactive)
   (if (and text-adjust-rule-kutouten (not forcep) (not (interactive-p)))
       text-adjust-rule-kutouten
@@ -307,27 +307,27 @@ text-adjust-space ¤ò½ç¤Ë¼Â¹Ô¤¹¤ë¤³¤È¤Ë¤è¤ê,
 	   (let ((kutouten-alist 
 		  '(("kuten-zenkaku"  . text-adjust-rule-kutouten-zkuten)
 		    ("zenkaku-kuten"  . text-adjust-rule-kutouten-zkuten)
-		    ("¡¢¡£"           . text-adjust-rule-kutouten-zkuten)
+		    ("ã€ã€‚"           . text-adjust-rule-kutouten-zkuten)
 		    ("period-zenkaku" . text-adjust-rule-kutouten-zperiod)
 		    ("zenkaku-period" . text-adjust-rule-kutouten-zperiod)
-		    ("¡¤¡¥"           . text-adjust-rule-kutouten-zperiod)
+		    ("ï¼Œï¼"           . text-adjust-rule-kutouten-zperiod)
 		    ("period-hankaku" . text-adjust-rule-kutouten-hperiod)
 		    ("hankaku-period" . text-adjust-rule-kutouten-hperiod)
 		    (",."             . text-adjust-rule-kutouten-hperiod))))
 	     (cdr (assoc
-		   (completing-read "¶çÆÉÅÀ¤Î¼ïÎà: " kutouten-alist
+		   (completing-read "å¥èª­ç‚¹ã®ç¨®é¡: " kutouten-alist
 				    nil t ",.")
 		   kutouten-alist)))))))
 
 ;;;; text-adujst-space
 (defun text-adjust-space ()
-  "È¾³Ñ±Ñ¿ô¤ÈÆüËÜ¸ì¤Î´Ö¤Ë¶õÇò¤òÁŞÆş¤¹¤ë.
-text-adjust-japanese ¤ÇÄêµÁ¤µ¤ì¤¿ÆüËÜ¸ìÊ¸»ú¤ò¼¨¤¹Àµµ¬É½¸½¤È,
-text-adjust-ascii ¤ÇÄêµÁ¤µ¤ì¤¿È¾³Ñ±Ñ¿ôÊ¸»ú¤ò¼¨¤¹Àµµ¬É½¸½¤È¤Î´Ö¤Ë
-¶õÇò¤òÁŞÆş¤¹¤ë.
+  "åŠè§’è‹±æ•°ã¨æ—¥æœ¬èªã®é–“ã«ç©ºç™½ã‚’æŒ¿å…¥ã™ã‚‹.
+text-adjust-japanese ã§å®šç¾©ã•ã‚ŒãŸæ—¥æœ¬èªæ–‡å­—ã‚’ç¤ºã™æ­£è¦è¡¨ç¾ã¨,
+text-adjust-ascii ã§å®šç¾©ã•ã‚ŒãŸåŠè§’è‹±æ•°æ–‡å­—ã‚’ç¤ºã™æ­£è¦è¡¨ç¾ã¨ã®é–“ã«
+ç©ºç™½ã‚’æŒ¿å…¥ã™ã‚‹.
 
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive)
   (save-excursion
     (or (transient-region-active-p)
@@ -335,24 +335,24 @@ text-adjust-ascii ¤ÇÄêµÁ¤µ¤ì¤¿È¾³Ñ±Ñ¿ôÊ¸»ú¤ò¼¨¤¹Àµµ¬É½¸½¤È¤Î´Ö¤Ë
     (text-adjust-space-region (region-beginning) (region-end))))
 
 (defun text-adjust-space-buffer () 
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust-space ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust-space ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive)
   (text-adjust-space-region (point-min) (point-max)))
   
 (defun text-adjust-space-region (from to) 
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ôtext-adjust-space¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•°text-adjust-spaceã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r")
   (text-adjust--replace text-adjust-rule-space from to))
 
 
 ;;;; text-adjust-fill
 (defun text-adjust-fill ()
-  "¶çÆÉÅÀ¤Ç¤Î²ş¹Ô¤òÍ¥Àè¤·¤Æ, fill-region ¤ò¼Â¹Ô¤¹¤ë.
-³Æ¹Ô¤Î text-adjust-fill-start ¤«¤é, fill-column ¤Ş¤Ç¤Î´Ö¤Ë,
-text-adjust-fill-regexp ¤¬ºÇ¸å¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤È¤³¤í¤Ç²ş¹Ô¤¹¤ë.
+  "å¥èª­ç‚¹ã§ã®æ”¹è¡Œã‚’å„ªå…ˆã—ã¦, fill-region ã‚’å®Ÿè¡Œã™ã‚‹.
+å„è¡Œã® text-adjust-fill-start ã‹ã‚‰, fill-column ã¾ã§ã®é–“ã«,
+text-adjust-fill-regexp ãŒæœ€å¾Œã«å«ã¾ã‚Œã¦ã„ã‚‹ã¨ã“ã‚ã§æ”¹è¡Œã™ã‚‹.
 
-¥ê¡¼¥¸¥ç¥ó¤Î»ØÄê¤¬¤¢¤Ã¤¿¾ì¹ç¤Ï¤½¤ÎÈÏ°Ï¤ò, ¤Ê¤±¤ì¤Ğ mark-paragraph ¤Ë¤è¤Ã¤Æ
-ÆÀ¤é¤ì¤¿ÈÏ°Ï¤òÂĞ¾İ¤Ë¤¹¤ë."
+ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®æŒ‡å®šãŒã‚ã£ãŸå ´åˆã¯ãã®ç¯„å›²ã‚’, ãªã‘ã‚Œã° mark-paragraph ã«ã‚ˆã£ã¦
+å¾—ã‚‰ã‚ŒãŸç¯„å›²ã‚’å¯¾è±¡ã«ã™ã‚‹."
   (interactive)
   (save-excursion
     (or (transient-region-active-p)
@@ -360,12 +360,12 @@ text-adjust-fill-regexp ¤¬ºÇ¸å¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤È¤³¤í¤Ç²ş¹Ô¤¹¤ë.
     (text-adjust-fill-region (region-beginning) (region-end))))
 
 (defun text-adjust-fill-buffer () 
-  "¥Ğ¥Ã¥Õ¥¡Æâ¤Ç´Ø¿ô text-adjust-fill ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒãƒƒãƒ•ã‚¡å†…ã§é–¢æ•° text-adjust-fill ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive)
   (text-adjust-fill-region (point-min) (point-max)))
   
 (defun text-adjust-fill-region (from to) 
-  "¥ê¡¼¥¸¥ç¥óÆâ¤Ç´Ø¿ô text-adjust-fill ¤ò¼Â¹Ô¤¹¤ë."
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å†…ã§é–¢æ•° text-adjust-fill ã‚’å®Ÿè¡Œã™ã‚‹."
   (interactive "r")
   (save-excursion
     (save-restriction
@@ -413,11 +413,11 @@ text-adjust-fill-regexp ¤¬ºÇ¸å¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤È¤³¤í¤Ç²ş¹Ô¤¹¤ë.
 	     (counts (nth 2 rule-pattern)))
 	(while (re-search-forward regexp nil t)
 	  (let ((n 1) (m 0) right-string)
-	    ; ³ºÅö¥Ñ¥¿¡¼¥ó¤Ş¤Ç¤¹¤¹¤á¤ë
+	    ; è©²å½“ãƒ‘ã‚¿ãƒ¼ãƒ³ã¾ã§ã™ã™ã‚ã‚‹
 	    (while (not (match-beginning n))
 	      (setq n (+ n 3 (mapadd (nth m counts)))
 		    m (1+ m)))
-	    ; ³ºÅö¥Ñ¥¿¡¼¥ó¤ÈÃÖ´¹¤¹¤ë
+	    ; è©²å½“ãƒ‘ã‚¿ãƒ¼ãƒ³ã¨ç½®æ›ã™ã‚‹
 	    (let* ((tmp n)
 		   (total-counts 
 		    (cons n (mapcar (lambda (x) (setq tmp (+ tmp x 1)))
@@ -425,18 +425,18 @@ text-adjust-fill-regexp ¤¬ºÇ¸å¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤È¤³¤í¤Ç²ş¹Ô¤¹¤ë.
 		   (right-string (match-string (nth 2 total-counts))))
 	      (replace-match 
 	       (concat 
-		;; ³ºÅö¥Ñ¥¿¡¼¥ó¤Îº¸Â¦
+		;; è©²å½“ãƒ‘ã‚¿ãƒ¼ãƒ³ã®å·¦å´
 		(match-string n)
-		;; ³ºÅö¥Ñ¥¿¡¼¥ó¤Î¤Ş¤óÃæ (ÃÖ´¹ÉôÊ¬)
+		;; è©²å½“ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ã¾ã‚“ä¸­ (ç½®æ›éƒ¨åˆ†)
 		(mapconcat
 		 (lambda (x) 
 		   (if (stringp x) x
 		     (match-string (+ (nth (1- (car x)) total-counts) 
 				      (cdr x)))))
 		 (nth m target) "")
-		;; ³ºÅö¥Ñ¥¿¡¼¥ó¤Î±¦Â¦
+		;; è©²å½“ãƒ‘ã‚¿ãƒ¼ãƒ³ã®å³å´
 		right-string))
-	      ;; "¤¢a¤¢a" ¤Î¤è¤¦¤Ë°ìÊ¸»ú¤º¤Ä¤ÇÊÂ¤ó¤Ç¤¤¤ë»ş¤ÎÂĞ½è
+	      ;; "ã‚aã‚a" ã®ã‚ˆã†ã«ä¸€æ–‡å­—ãšã¤ã§ä¸¦ã‚“ã§ã„ã‚‹æ™‚ã®å¯¾å‡¦
 	      (backward-char (length right-string))))))
       )))
 
