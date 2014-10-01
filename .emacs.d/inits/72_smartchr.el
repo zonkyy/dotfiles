@@ -181,7 +181,6 @@
   (local-set-key (kbd "<") (smartchr '("<%= `!!' %>" "<% `!!' %>" "<`!!'>" "<"))))
 
 (add-hook 'ruby-mode-hook 'smartchr-keybindings-ruby)
-(add-hook 'c-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'c++-mode-hook 'smartchr-keybindings-c/c++)
 (add-hook 'awk-mode-hook 'smartchr-keybindings-awk)
 (add-hook 'php-mode-hook 'smartchr-keybindings-php)
