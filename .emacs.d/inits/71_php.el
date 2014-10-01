@@ -9,6 +9,9 @@
   (ggtags-mode)
   (php-eldoc-enable)
 
+  ;; flycheck
+  (flycheck-mode t)
+
   ;; php-mode で削除されるので再定義
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
