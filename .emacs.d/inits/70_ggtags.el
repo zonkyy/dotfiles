@@ -2,5 +2,3 @@
 
 (use-package ggtags
   :ensure ggtags)
-
-(add-hook 'c-mode-common-hook 'ggtags-mode)

@@ -6,6 +6,7 @@
 
 (defun php-mode-hooks ()
   (php-enable-psr2-coding-style)
+  (ggtags-mode)
 
   ;; php-mode で削除されるので再定義
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
