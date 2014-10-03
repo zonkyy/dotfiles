@@ -12,6 +12,10 @@
   ;; flycheck
   (flycheck-mode t)
 
+  ;; keybind
+  (local-set-key (kbd "C-c c") 'smart-compile)
+  (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
+
   ;; php-mode で削除されるので再定義
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
