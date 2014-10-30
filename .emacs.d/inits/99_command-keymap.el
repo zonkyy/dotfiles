@@ -13,9 +13,9 @@
 ;;; C-l をプレフィックスキーとしたため元のコマンドを C-l C-l に変更
 (global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
 
-;;; C-l r(R) で置換
-(global-set-key (kbd "C-l r") 'query-replace)
-(global-set-key (kbd "C-l R") 'query-replace-regexp)
+;;; 置換のコマンドを C-l プレフィックスキーを使ったキーに変更
+(global-set-key (kbd "C-l R") 'query-replace)
+(global-set-key (kbd "C-l C-r") 'query-replace-regexp)
 
 ;;; C-x C-cをEmacs終了ではなくクライアントの終了に割り当てる
 (global-set-key (kbd "C-x C-c") 'server-edit)
