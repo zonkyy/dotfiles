@@ -93,12 +93,15 @@
 (defun org-pukiwiki-item (item contents info)
   (let* ((type (org-element-property :type (org-export-get-parent item)))
          (struct (org-element-property :structure item))
+         (tag (let ((tag (org-element-property :tag item)))
+                (and tag (org-export-data tag info))))
          (bullet
           (cond ((eq type 'unordered) "-")
-                ((eq type 'ordered) "+")))
+                ((eq type 'ordered) "+")
+                ((eq type 'descriptive) (concat ": " tag " | "))))
          text)
-    (replace-regexp-in-string "^\\([^-+]\\)" (concat bullet "\\1")
-                              (replace-regexp-in-string "^\\([-+]\\)" "\\1\\1" contents))))
+    (replace-regexp-in-string "^\\([^-+:]\\)" (concat bullet "\\1")
+                              (replace-regexp-in-string "^\\([-+:]\\)" "\\1\\1" contents))))
 
 (defun org-pukiwiki-quote-block (quote-block contents info)
   (format ">>\n%s<<" contents))
