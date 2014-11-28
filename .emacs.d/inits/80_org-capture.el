@@ -20,7 +20,7 @@
          nil
          :unnarrowed t)
         ("p" "PHP Manual" plain
-         (file+datetree "~/documents/notes/lifelog.org" ,(today-string))
+         (file+datetree "~/documents/notes/php.org" ,(today-string))
          "**** PHP マニュアル ( まで)\n     - %?"
          :unnarrowed t)
         ("d" "daily report" plain
