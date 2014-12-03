@@ -16,6 +16,6 @@
 (remove-hook 'kill-emacs-hook 'recentf-save-list)
 
 ;;; recentf 自動保存
-(setq recentf-auto-cleanup 10)
+(setq recentf-auto-cleanup 600)
 (setq recentf-auto-save-timer
       (run-with-idle-timer 30 t 'recentf-save-list))
