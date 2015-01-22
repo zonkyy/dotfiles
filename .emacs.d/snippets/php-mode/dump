@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : dump
+#key : dump
+#contributor : ope
+# --
+echo "<pre>";
+var_dump($0);
