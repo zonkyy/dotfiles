@@ -24,7 +24,8 @@
 
 (defun flycheck-mode-hooks ()
   (interactive)
-  (cond ((member (projectile-project-name) flycheck-php55-projects)
-         (flycheck-select-checker 'php55))))
+  (if (eq major-mode 'php-mode)
+      (cond ((member (projectile-project-name) flycheck-php55-projects)
+             (flycheck-select-checker 'php55)))))
 
 (add-hook 'find-file-hooks 'flycheck-mode-hooks)
