@@ -32,24 +32,10 @@
       (when (> offset 0) (forward-char offset)))))
 
 
-;;; end 等の補完
-;;; delimiter の補完は行わないように，ruby-electric をロードする前に変数を変更
-(setq ruby-electric-mode-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map " " 'ruby-electric-space/return)
-        (define-key map [remap delete-backward-char] 'ruby-electric-delete-backward-char)
-        (define-key map [remap newline] 'ruby-electric-space/return)
-        (define-key map [remap newline-and-indent] 'ruby-electric-space/return)
-        map))
-(use-package ruby-electric
-  :ensure ruby-electric)
-
-;;; ruby-electric に足りない関数を追加
-(defun ruby-insert-end ()
-  (interactive)
-  (insert "end")
-  (ruby-indent-line t)
-  (end-of-line))
+;;; end の補完
+(setq ruby-end-expand-ret-key "C-j")
+(setq ruby-end-insert-newline nil)
+(require 'ruby-end)
 
 
 ;;; end に対応する行のハイライト
@@ -81,8 +67,6 @@
 ;;; hooks
 (defun ruby-mode-hooks ()
   (flycheck-mode t)
-  (ruby-electric-mode t)
-  (setq ruby-electric-expand-delimiters-list nil)
   (local-set-key (kbd "C-c C-r") 'helm-myrurema)
   (local-set-key (kbd "C-c C-d") 'xmp)
   (local-set-key (kbd "C-c c") 'smart-compile)
