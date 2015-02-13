@@ -14,8 +14,8 @@
 (global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
 
 ;;; 置換のコマンドを C-l プレフィックスキーを使ったキーに変更
-(global-set-key (kbd "C-l R") 'query-replace)
-(global-set-key (kbd "C-l C-r") 'query-replace-regexp)
+(global-set-key (kbd "C-l R") 'query-replace-regexp)
+(global-set-key (kbd "C-l C-r") 'query-replace)
 
 ;;; C-x C-cをEmacs終了ではなくクライアントの終了に割り当てる
 (global-set-key (kbd "C-x C-c") 'server-edit)
