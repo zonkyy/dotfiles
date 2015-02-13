@@ -35,7 +35,8 @@
 ;;; end の補完
 (setq ruby-end-expand-ret-key "C-j")
 (setq ruby-end-insert-newline nil)
-(require 'ruby-end)
+(use-package ruby-end
+  :ensure ruby-end)
 
 
 ;;; end に対応する行のハイライト
