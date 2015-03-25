@@ -68,6 +68,8 @@
 ;;; hooks
 (defun ruby-mode-hooks ()
   (flycheck-mode t)
+  (ggtags-mode)
+
   (local-set-key (kbd "C-c C-r") 'helm-myrurema)
   (local-set-key (kbd "C-c C-d") 'xmp)
   (local-set-key (kbd "C-c c") 'smart-compile)
