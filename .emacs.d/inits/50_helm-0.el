@@ -25,6 +25,8 @@
 
 ;; ;;; 既存のコマンドを Helm インターフェイスに置き換える
 (helm-mode 1)
+;;; history を先に表示
+(setq helm-mode-reverse-history nil)
 ;;; 自動補完を無効
 (custom-set-variables '(helm-ff-auto-update-initial-value nil))
 ;;; helm-mode で無効にしたいコマンド
