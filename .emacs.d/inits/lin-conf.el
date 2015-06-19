@@ -10,13 +10,9 @@
 (set-fontset-font t 'unicode "ricty" nil 'prepend)
 
 
-;;; フレームサイズ・位置・色などの設定
-(setq default-frame-alist
-      (append (list '(foreground-color . "gray80")
-                    '(background-color . "black")
-                    '(border-color . "black")
-                    '(mouse-color . "white"))
-              default-frame-alist))
+;;; テーマ (.emacs.d に配置)
+;; https://raw.githubusercontent.com/emacs-jp/replace-colorthemes/master/clarity-theme.el
+(load-theme 'clarity t)
 
 
 ;;; emacsclientw.exe を使用して外部からemacsにファイルを渡せるようにする
