@@ -136,6 +136,9 @@
 ;;; 内部での日付/時間表記は英語で行う
 (setq system-time-locale "C")
 
+;;; 全角スペースの幅を 1 文字と認識される問題の修正
+(set-language-environment "Japanese")
+
 
 ;;; 長いリストも全て出力する
 (setq eval-expression-print-length nil)
