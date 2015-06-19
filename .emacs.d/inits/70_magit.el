@@ -6,6 +6,8 @@
 (global-set-key (kbd "C-x v L") 'magit-key-mode-popup-logging)
 (global-set-key (kbd "C-x v z") 'magit-stash)
 (define-key magit-mode-map "\M-l" "l-all")
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 
 ;;; magit で git-svn のコマンドを使用する
