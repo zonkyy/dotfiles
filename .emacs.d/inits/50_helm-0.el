@@ -10,8 +10,6 @@
   :ensure helm-orgcard)
 (use-package helm-descbinds
   :ensure helm-descbinds)
-(use-package helm-swoop
-  :ensure helm-swoop)
 
 
 ;;; helm-migemo のバグ修正用設定

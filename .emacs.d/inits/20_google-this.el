@@ -4,5 +4,5 @@
   :ensure google-this)
 
 
-(global-set-key (kbd "C-l s") 'google-this)
+(global-set-key (kbd "C-l g") 'google-this)
 (google-this-mode 1)

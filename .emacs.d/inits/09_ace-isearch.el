@@ -4,4 +4,5 @@
   :ensure ace-isearch)
 
 (global-ace-isearch-mode 1)
-(setq ace-isearch-input-idle-jump-delay 0.2)
+(setq ace-isearch-use-ace-jump nil)
+;; (setq ace-isearch-input-idle-jump-delay 0.3)
