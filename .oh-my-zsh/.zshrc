@@ -49,7 +49,7 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux colored-man cp gem git github history rsync tmux # $ZSH/plugins
+plugins=(colored-man cp gem git github history rsync tmux # $ZSH/plugins
          conv tmuxpane auto-fu anyframe) # $ZSH_CUSTOM/plugins
 
 # User configuration
