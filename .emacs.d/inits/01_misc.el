@@ -139,6 +139,9 @@
 ;;; 全角スペースの幅を 1 文字と認識される問題の修正
 (set-language-environment "Japanese")
 
+;;; C-i と TAB を別のキーとして扱う
+(setq local-function-key-map (delq '(kp-tab . [9]) local-function-key-map))
+
 
 ;;; 長いリストも全て出力する
 (setq eval-expression-print-length nil)
