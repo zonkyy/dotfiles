@@ -51,9 +51,9 @@ ZSH_THEME="simple"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     # $ZSH/plugins
-    colored-man cp gem git github history rsync tmux vagrant docker rbenv rails
+    colored-man cp gem git github history rsync tmux vagrant docker rails
     # $ZSH_CUSTOM/plugins
-    conv tmuxpane auto-fu anyframe
+    conv tmuxpane auto-fu anyframe myrbenv
 )
 
 # User configuration
