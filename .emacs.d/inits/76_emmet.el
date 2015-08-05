@@ -8,4 +8,3 @@
 (add-hook 'css-mode-hook 'emmet-mode)
 
 (define-key emmet-mode-keymap (kbd "C-m") 'emmet-expand-line)
-(define-key emmet-mode-keymap (kbd "C-j") 'newline-and-indent)

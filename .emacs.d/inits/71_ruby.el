@@ -33,7 +33,6 @@
 
 
 ;;; end の補完
-(define-key ruby-mode-map (kbd "C-j") 'newline-and-indent)
 (setq ruby-end-expand-ret-key "C-j")
 (setq ruby-end-insert-newline nil)
 (use-package ruby-end

@@ -15,7 +15,6 @@
   (flycheck-mode t)
 
   ;; keybind
-  (local-set-key (kbd "C-j") 'newline-and-indent)
   (local-set-key (kbd "C-c c") 'smart-compile)
   (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
   (define-key yas-minor-mode-map (kbd "<tab>") nil)

@@ -66,6 +66,9 @@
 ;;; 対応する括弧を自動入力
 (electric-pair-mode 1)
 
+;;; C-j でインデントあり、C-m でインデントなしの改行
+(electric-indent-mode -1)
+
 ;;; 行番号・桁番号を表示する
 (line-number-mode 1)
 (column-number-mode 1)
