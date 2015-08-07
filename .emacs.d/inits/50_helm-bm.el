@@ -3,19 +3,18 @@
 (use-package helm-bm
   :ensure helm-bm)
 
-;;; セパレータが邪魔なので (multiline) を削除
-(setq helm-source-bm
-      `((name . "Visible bookmarks")
-        (init . helm-bm-init)
-        (volatile)
-        (candidates . helm-bm-list-cache)
-        (action . (("Switch to buffer" . helm-bm-action-switch-to-buffer)
-                   ("Remove(s)" . helm-bm-action-remove-markd-bookmarks)
-                   (,helm-bm-action-name-edit-annotation
-                    . helm-bm-action-bookmark-edit-annotation)
-                   ("Remove all bookmarks in current buffer" .
-                    (lambda (_c) (bm-remove-all-current-buffer)))
-                   ("Remove all bookmarks in all buffers" .
-                    (lambda (_c) (bm-remove-all-all-buffers)))))))
+;;; migemo 使用
+(push '(migemo) helm-source-bm)
 
-(global-set-key (kbd "C-l C-;") 'helm-bm)
+;;; セパレータが邪魔なので (multiline) を削除
+(setq helm-source-bm (delete '(multiline) helm-source-bm))
+
+
+(defun bm-toggle-or-helm ()
+  "2回連続で起動したらhelm-bmを実行させる"
+  (interactive)
+  (bm-toggle)
+  (when (eq last-command 'bm-toggle-or-helm)
+    (helm-bm)))
+
+(global-set-key (kbd "M-SPC") 'bm-toggle-or-helm)

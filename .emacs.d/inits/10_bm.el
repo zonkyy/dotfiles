@@ -11,7 +11,8 @@
 ;;; キー設定
 (global-set-key (kbd "M-[") 'bm-previous)
 (global-set-key (kbd "M-]") 'bm-next)
-(global-set-key (kbd "M-SPC") 'bm-toggle)
+;;; helm-bm.el で定義済みのためコメントアウト
+;; (global-set-key (kbd "M-SPC") 'bm-toggle)
 
 ;;; bm 保存設定
 (setq-default bm-buffer-persistence t)
