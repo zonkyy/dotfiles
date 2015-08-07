@@ -6,7 +6,7 @@
 
 
 ;;; 強調したい要素を指定
-(setq whitespace-style '(space-mark tab-mark face spaces tabs trailing lines-tail))
+(setq whitespace-style '(space-mark tab-mark face spaces tabs trailing))
 
 
 ;;; whitespace-space を全角スペースと定義
@@ -17,10 +17,6 @@
 (setq whitespace-display-mappings
       '((space-mark ?\u3000 [?□] [?_ ?_])
         (tab-mark     ?\t    [?^ ?\t] [?\\ ?\t])))
-
-
-;;; 1 行の文字数を制限
-(setq whitespace-line-column 85)
 
 
 ;;; 各要素の face 設定

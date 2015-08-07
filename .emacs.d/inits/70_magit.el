@@ -14,3 +14,15 @@
 (use-package magit-svn
   :ensure magit-svn)
 (add-hook 'magit-mode-hook 'magit-svn-mode)
+
+
+;;; magit-status の 'e' を 3 画面から 2 画面に変更
+(defun magit-ediff-show-staged-or-unstaged ()
+  (interactive)
+  (pcase (magit-diff--dwim)
+    (`unstaged (magit-ediff-show-unstaged (magit-current-file)))
+    (`staged (magit-ediff-show-staged (magit-current-file)))
+    (_
+     (message "Can't ediff this file."))))
+
+(define-key magit-mode-map (kbd "e") 'magit-ediff-show-staged-or-unstaged)
