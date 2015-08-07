@@ -22,3 +22,6 @@
 
 ;;; ミニバッファで C-w で区切りまで削除
 (define-key minibuffer-local-completion-map (kbd "C-w") 'backward-kill-word)
+
+;;; CUA モードの矩形選択
+(global-set-key (kbd "C-x SPC") 'cua-rectangle-mark-mode)
