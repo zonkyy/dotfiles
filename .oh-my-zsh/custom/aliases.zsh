@@ -1,3 +1,5 @@
+alias df='df -h'
+
 alias -g L='| less'
 alias -g P='| percol --match-method migemo'
 
