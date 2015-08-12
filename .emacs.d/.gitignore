@@ -1,12 +1,15 @@
-.git
+/*
 
-/ddskk/*
-!/ddskk/init
+# Whitelist
 !/ddskk/dic
+!/ddskk/init
 
-/elisp/*
 !/elisp/*.el
 
-/elpa
+!/inits
 
-/inits/old
+!/snippets
+
+!/*theme.el
+!/.gitignore
+!/init.el
