@@ -2,6 +2,7 @@
 
 /ddskk/*
 !/ddskk/init
+!/ddskk/dic
 
 /elisp/*
 !/elisp/*.el
