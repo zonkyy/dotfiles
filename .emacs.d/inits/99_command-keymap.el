@@ -1,6 +1,9 @@
 ;;;; 標準コマンドのキー割り当て
 
 
+;;; electric-newline は ] のインデント位置を間違えるので newline-and-indent を使用
+(global-set-key (kbd "C-j") 'newline-and-indent)
+
 ;;; サスペンドしない
 (global-unset-key (kbd "C-x C-z"))
 
