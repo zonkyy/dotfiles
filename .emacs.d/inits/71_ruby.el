@@ -12,6 +12,11 @@
                                      interpreter-mode-alist))
 
 
+;;; YARD モード
+(use-package yard-mode
+  :ensure t)
+
+
 ;;; インデント設定
 (setq ruby-indent-level 2)
 (setq ruby-indent-tabs-mode nil)
@@ -67,6 +72,7 @@
 
 ;;; hooks
 (defun ruby-mode-hooks ()
+  (yard-mode)
   (flycheck-mode t)
   (ggtags-mode)
 
