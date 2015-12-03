@@ -7,15 +7,6 @@
 (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 
 
-;;; 括弧の対応を保持して編集する
-(use-package paredit
-  :ensure paredit)
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'ielm-mode-hook 'enable-paredit-mode)
-
-
 ;;; デバッグを容易にする d マクロ
 ;;; (値を表示したい式を (d 式) に置き換える)
 (defmacro d (expr)
