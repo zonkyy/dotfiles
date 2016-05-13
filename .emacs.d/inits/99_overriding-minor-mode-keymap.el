@@ -35,9 +35,3 @@ C-uをつけるとウィンドウを閉じる。"
           (lambda ()
             (overriding-minor-mode -1)
             (local-set-key (kbd "M-h") 'backward-kill-word)))
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (overriding-minor-mode -1)
-            (local-set-key (kbd "C-q") 'other-window-or-split-or-close)
-            (local-set-key (kbd "M-h") 'backward-kill-word)))
