@@ -69,4 +69,4 @@ from the org schedule data."
  '(cfw:face-toolbar-button-on ((t (:foreground "Gray80" :weight bold)))))
 
 
-(global-set-key (kbd "C-l c") 'open-my-calendar)
+;; (global-set-key (kbd "C-l c") 'open-my-calendar)
