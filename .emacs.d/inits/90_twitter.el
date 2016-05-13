@@ -10,7 +10,7 @@
       "%i%R %p%s %C{%-m/%-d(%a)%1H:%1M} %r\n  %t\n")
 (setq twittering-initial-timeline-spec-string
       '(":home" "akisute3" ":mentions"))
-(global-set-key (kbd "C-l t") 'twit)
+;; (global-set-key (kbd "C-l t") 'twit)
 
 
 ;;; 新しい TL を開く前に現在の TL バッファを削除する
