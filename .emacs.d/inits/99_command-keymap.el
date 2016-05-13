@@ -29,5 +29,5 @@
 ;;; CUA モードの矩形選択
 (global-set-key (kbd "C-x SPC") 'cua-rectangle-mark-mode)
 
-;;; C-l SPC でスペースの数を 1, 0, n の 3 通りに切り替え
-(global-set-key (kbd "C-l SPC") 'cycle-spacing)
+;;; M-SPC を just-one-space から cycle-spacing に置き換える
+(substitute-key-definition 'just-one-space (lambda () (interactive) (cycle-spacing -1 t)) (current-global-map))
