@@ -4,6 +4,10 @@
   :ensure flycheck)
 
 
+;;; C++ の設定
+(setq flycheck-clang-language-standard "c++11")
+
+
 ;;; 独自 Checker 定義
 (flycheck-define-checker php55
   "PHP 5.5 用チェッカー"
