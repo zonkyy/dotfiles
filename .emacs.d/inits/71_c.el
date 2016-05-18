@@ -19,6 +19,7 @@
   ;; flycheck
   (flycheck-mode t)
   (flycheck-select-checker 'c/c++-clang)
+  (setq flycheck-clang-language-standard "c++11")
   ;; keybind
   (local-set-key (kbd "C-c c") 'smart-compile)
   (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
