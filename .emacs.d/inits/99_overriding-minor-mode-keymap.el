@@ -1,11 +1,30 @@
 ;;;; minor-mode のキーマップを強制的に変更
 
 
+;;; 移動したくないウィンドウ (GDB の一時バッファ) に移動しないための関数
+(defvar ignore-window-regexp "\\*\\(locals\\|input/output\\|stack frames\\|breakpoints\\) of .*\\*")
+(defun next-window-except-ignore-window ()
+  (interactive)
+  (let* ((window (selected-window))
+         (old-window window)
+         (found-p nil))
+    (while (not found-p)
+      (setq window (next-window window))
+      (cond
+       ((eq old-window window)
+        (setq found-p t))
+       ((string-match ignore-window-regexp (buffer-name (window-buffer window))))
+       (t
+        (setq found-p t))))
+    (select-window window)
+    nil))
+
+
 ;;; 画面の分割と移動 (分割されていたら移動)
 (defun other-window-or-split ()
   (interactive)
   (when (one-window-p) (split-window-sensibly (get-buffer-window)))
-  (other-window 1))
+  (next-window-except-ignore-window))
 
 
 ;;; 上に加えてC-uが付いていたら画面を閉じる
