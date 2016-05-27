@@ -9,6 +9,16 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 
+;;; GDB のウィンドウを固定しない
+(defadvice gdb-display-buffer (after undedicate-gdb-display-buffer)
+  (set-window-dedicated-p ad-return-value nil))
+(ad-activate 'gdb-display-buffer)
+
+(defadvice gdb-set-window-buffer (after undedicate-gdb-set-window-buffer (name &optional ignore-dedi window))
+  (set-window-dedicated-p window nil))
+(ad-activate 'gdb-set-window-buffer)
+
+
 ;;; hooks
 (defun c/c++-mode-hooks ()
   ;; google-c-style
@@ -20,6 +30,8 @@
   (flycheck-mode t)
   (flycheck-select-checker 'c/c++-clang)
   (setq flycheck-clang-language-standard "c++11")
+  ;; GDB
+  (setq gdb-many-windows t)
   ;; keybind
   (local-set-key (kbd "C-c c") 'smart-compile)
   (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
