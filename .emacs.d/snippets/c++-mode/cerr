@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: cerr
+# key: err
+# contributor: akisute3
+# --
+std::cerr << $0 << std::endl;
