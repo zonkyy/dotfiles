@@ -71,8 +71,8 @@
   ;; GDB
   (setq gdb-many-windows t)
   ;; keybind
-  (local-set-key (kbd "C-c c") 'smart-compile)
-  (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
+  (local-set-key (kbd "C-c c") 'multi-compile-input-and-run)
+  (local-set-key (kbd "C-c C-c") 'multi-compile-run)
   (local-set-key (kbd "C-i") 'c-indent-line-or-region))
 
 (add-hook 'c++-mode-hook 'c/c++-mode-hooks)

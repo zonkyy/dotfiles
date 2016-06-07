@@ -19,3 +19,12 @@
         (message ""))
     (read-string (format "%s (default:%s): " prompt (thing-at-point 'symbol))
                  nil nil (thing-at-point 'symbol))))
+
+;;; 前置引数で C-u を叩いた回数を数える
+(defun count-c-u (prefix)
+  (cond ((= prefix 1)
+         0)
+        ((< prefix 16)
+         1)
+        (t
+         (+ 1 (count-c-u (/ prefix 4))))))

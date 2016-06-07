@@ -15,8 +15,8 @@
   (flycheck-mode t)
 
   ;; keybind
-  (local-set-key (kbd "C-c c") 'smart-compile)
-  (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
+  (local-set-key (kbd "C-c c") 'multi-compile-input-and-run)
+  (local-set-key (kbd "C-c C-c") 'multi-compile-run)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (local-set-key (kbd "<tab>") 'yas/create-php-snippet)
 

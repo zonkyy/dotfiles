@@ -78,8 +78,8 @@
 
   (local-set-key (kbd "C-c C-r") 'helm-myrurema)
   (local-set-key (kbd "C-c C-d") 'xmp)
-  (local-set-key (kbd "C-c c") 'smart-compile)
-  (local-set-key (kbd "C-c C-c") (kbd "C-c c C-m"))
+  (local-set-key (kbd "C-c c") 'multi-compile-input-and-run)
+  (local-set-key (kbd "C-c C-c") 'multi-compile-run)
   ;; '@', ':', '!' をシンボルとして扱う
   (modify-syntax-entry ?@ "_" ruby-mode-syntax-table)
   (modify-syntax-entry ?: "_" ruby-mode-syntax-table)
