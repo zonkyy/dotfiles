@@ -7,7 +7,7 @@
 !/elisp/*.el
 
 !/inits
-
+!/org-templates
 !/snippets
 
 !/*theme.el
