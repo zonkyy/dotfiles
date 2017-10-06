@@ -81,6 +81,22 @@
 (desktop-save-mode 1)
 
 
+
+(keyboard-translate ?\C-h ?\C-?)
+(unbind-key "C-x C-z")
+(unbind-key "C-l")
+(bind-keys
+ ("C-j" . newline-and-indent)
+ ("C-x C-r" . revert-buffer)
+ ("C-l R" . query-replace-regexp)
+ ("C-l C-r" . query-replace))
+(bind-keys*
+ ("M-h" . backward-kill-word))
+(bind-keys :map minibuffer-local-completion-map
+           ("C-w" . backward-kill-word))
+
+
+
 (use-package other-window-or-split
   :load-path "elisp"
   :bind* ("C-q" . other-window-or-split-or-close))
