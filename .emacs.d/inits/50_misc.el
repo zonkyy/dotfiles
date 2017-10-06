@@ -100,3 +100,12 @@
 (use-package other-window-or-split
   :load-path "elisp"
   :bind* ("C-q" . other-window-or-split-or-close))
+
+
+(use-package rotate
+  :ensure t
+  :bind
+  ("C-S-q" . rotate-window)
+  :config
+  (defadvice rotate-window (after rotate-cursor activate)
+    (other-window 1)))
