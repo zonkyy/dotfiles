@@ -1,12 +1,12 @@
-(setq 
+(setq
  ;; 警告音の代わりにウィンドウの上下 1 行ずつが反転
  visible-bell t
  ;; window 分割時、画面外に出る文章を折り返す
  truncate-partial-width-windows nil
  ;; オートセーブの場所を指定する
- backup-directory-alist `((".*" . "~/.emacs.cache/auto-save-file"))
- auto-save-file-name-transforms `((".*" "~/.emacs.cache/auto-save-file" t))
- auto-save-list-file-prefix "~/.emacs.cache/auto-save-list/.saves-"
+ backup-directory-alist `((".*" . ,(format "%s/auto-save-file" my-cache-dir)))
+ auto-save-file-name-transforms `((".*" ,(format "%s/auto-save-file" my-cache-dir) t))
+ auto-save-list-file-prefix (format "%s/auto-save-list/.saves-" my-cache-dir)
  ;; ロックファイルを作成しない
  scroll-preserve-screen-position t
  ;; 画面外にカーソルを移動した際 1 行ずつ移動
@@ -30,7 +30,7 @@
  ;; ediff で最初から縦分割
  ediff-split-window-function 'split-window-horizontally
  ;; cookies ファイルの保存場所を変更
- url-cookie-file "~/.emacs.cache/url/cookies"
+ url-cookie-file (format "%s/url/cookies" my-cache-dir)
  ;; fill-paragraph のエラーを防止
  kinsoku-limit 4
  ;; 内部での日付/時間表記は英語で行う

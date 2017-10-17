@@ -9,4 +9,5 @@
 (use-package init-loader
   :ensure t
   :init
+  (defvar my-cache-dir "~/.emacs.cache")
   (init-loader-load))
