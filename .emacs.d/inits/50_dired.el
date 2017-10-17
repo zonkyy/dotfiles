@@ -1,4 +1,4 @@
-(use-package dired-x
+(use-package dired
   :bind
   (:map dired-mode-map
         ("." . dired-dwim-up-alternate-directory)
@@ -9,6 +9,8 @@
   
   
   :init
+  (require 'dired-x)
+
   (defun dired-dwim-find-alternate-file ()
     "画面分割に適した `dired-find-alternate-file'"
     (interactive)
