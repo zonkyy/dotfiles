@@ -1,3 +1,5 @@
+(load-theme 'clarity t)
+
 (setq
  ;; 警告音の代わりにウィンドウの上下 1 行ずつが反転
  visible-bell t
