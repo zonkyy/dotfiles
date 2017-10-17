@@ -90,6 +90,7 @@
 (bind-keys
  ("C-j" . newline-and-indent)
  ("C-x C-r" . revert-buffer)
+ ("C-l C-l" . recenter-top-bottom)
  ("C-l R" . query-replace-regexp)
  ("C-l C-r" . query-replace))
 (bind-keys*
