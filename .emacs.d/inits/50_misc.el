@@ -42,7 +42,7 @@
  ;; 長いリストを全て出力
  eval-expression-print-length nil
  eval-expression-print-level nil)
-      
+
 ;; タブ文字ではなくスペースでインデント
 (setq-default indent-tabs-mode nil)
 
@@ -112,3 +112,33 @@
   :config
   (defadvice rotate-window (after rotate-cursor activate)
     (other-window 1)))
+
+
+(use-package whitespace
+  :init
+  (global-whitespace-mode 1)
+
+  (setq
+   ;; 強調したい要素
+   whitespace-style '(space-mark tab-mark face spaces tabs trailing)
+   ;; whitespace-space を全角スペースと定義
+   whitespace-space-regexp "\\(\u3000+\\)"
+   ;; 全角スペース，タブに使用する記号
+   whitespace-display-mappings '((space-mark ?\u3000 [?□] [?_ ?_])
+                                 (tab-mark     ?\t    [?^ ?\t] [?\\ ?\t])))
+
+  ;; face 設定
+  (set-face-attribute 'whitespace-space nil
+                      :foreground "green"
+                      :background 'unspecified)
+  (set-face-attribute 'whitespace-tab nil
+                      :foreground "purple"
+                      :background 'unspecified
+                      :underline t)
+  (set-face-attribute 'whitespace-trailing nil
+                      :foreground "purple"
+                      :background 'unspecified
+                      :underline t)
+
+  ;; ファイル保存時に行末のスペースを除去
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))

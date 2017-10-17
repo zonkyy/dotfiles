@@ -6,8 +6,7 @@
         ("C-j" . dired-dwim-find-alternate-file)
         ("q" . dired-dwim-quit-window)
         ("r" . wdired-change-to-wdired-mode))
-  
-  
+
   :init
   (require 'dired-x)
 
@@ -46,7 +45,6 @@
      (t
       (dired-up-alternate-directory))))
 
-  
   :config
   ;; ファイルを削除したらゴミ箱へ
   (setq delete-by-moving-to-trash t)
