@@ -142,3 +142,13 @@
 
   ;; ファイル保存時に行末のスペースを除去
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
+
+(use-package recentf-ext
+  :ensure t
+  :init
+  (setq recentf-max-saved-items 2000
+        recentf-auto-cleanup 600
+        recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+  (custom-set-variables `(recentf-save-file ,(format "%s/recentf" my-cache-dir)))
+  (recentf-mode 1))
