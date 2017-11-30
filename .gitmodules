@@ -1,6 +1,0 @@
-[submodule ".oh-my-zsh/custom/plugins/anyframe"]
-	path = .oh-my-zsh/custom/plugins/anyframe
-	url = https://github.com/mollifier/anyframe.git
-[submodule ".oh-my-zsh/custom/plugins/auto-fu"]
-	path = .oh-my-zsh/custom/plugins/auto-fu
-	url = https://github.com/takaken/auto-fu.zsh.git

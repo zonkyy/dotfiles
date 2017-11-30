@@ -1,2 +1,0 @@
-#+AUTHOR: Y.Onizuka
-#+OPTIONS: ^:nil -:nil p:t pri:t
