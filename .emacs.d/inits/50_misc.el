@@ -10,6 +10,8 @@
  auto-save-file-name-transforms `((".*" ,(format "%s/auto-save-file" my-cache-dir) t))
  auto-save-list-file-prefix (format "%s/auto-save-list/.saves-" my-cache-dir)
  ;; ロックファイルを作成しない
+ create-lockfiles nil
+ ;; C-vでスクロールした際，カーソルを一番上(下)に移動しない．
  scroll-preserve-screen-position t
  ;; 画面外にカーソルを移動した際 1 行ずつ移動
  scroll-conservatively 35
