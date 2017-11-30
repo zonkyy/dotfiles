@@ -1,11 +1,10 @@
 (use-package dired
-  :bind
-  (:map dired-mode-map
-        ("." . dired-dwim-up-alternate-directory)
-        ("RET" . dired-find-file-other-window)
-        ("C-j" . dired-dwim-find-alternate-file)
-        ("q" . dired-dwim-quit-window)
-        ("r" . wdired-change-to-wdired-mode))
+  :bind (:map dired-mode-map
+              ("." . dired-dwim-up-alternate-directory)
+              ("RET" . dired-find-file-other-window)
+              ("C-j" . dired-dwim-find-alternate-file)
+              ("q" . dired-dwim-quit-window)
+              ("r" . wdired-change-to-wdired-mode))
 
   :init
   (require 'dired-x)
@@ -62,3 +61,13 @@
     "画面分割に適した `quit-window'"
     (interactive)
     (quit-window (not (delq (selected-window) (get-buffer-window-list))))))
+
+
+(use-package dired-x
+  :bind (:map ctl-x-map
+              ("C-M-j" . dired-jump-home))
+
+  :init
+  (defun dired-jump-home ()
+    (interactive)
+    (dired-jump nil "~/")))
