@@ -6,9 +6,9 @@
  ;; window 分割時、画面外に出る文章を折り返す
  truncate-partial-width-windows nil
  ;; オートセーブの場所を指定する
- backup-directory-alist `((".*" . ,(format "%s/auto-save-file" my-cache-dir)))
- auto-save-file-name-transforms `((".*" ,(format "%s/auto-save-file" my-cache-dir) t))
- auto-save-list-file-prefix (format "%s/auto-save-list/.saves-" my-cache-dir)
+ backup-directory-alist `((".*" . ,(expand-file-name "auto-save-file" my-cache-dir)))
+ auto-save-file-name-transforms `((".*" ,(expand-file-name "auto-save-file" my-cache-dir) t))
+ auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" my-cache-dir)
  ;; ロックファイルを作成しない
  create-lockfiles nil
  ;; C-vでスクロールした際，カーソルを一番上(下)に移動しない．
@@ -34,7 +34,7 @@
  ;; ediff で最初から縦分割
  ediff-split-window-function 'split-window-horizontally
  ;; cookies ファイルの保存場所を変更
- url-cookie-file (format "%s/url/cookies" my-cache-dir)
+ url-cookie-file (expand-file-name "url/cookies" my-cache-dir)
  ;; fill-paragraph のエラーを防止
  kinsoku-limit 4
  ;; 内部での日付/時間表記は英語で行う
@@ -154,7 +154,7 @@
   (setq recentf-max-saved-items 2000
         recentf-auto-cleanup 600
         recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
-  (custom-set-variables `(recentf-save-file ,(format "%s/recentf" my-cache-dir)))
+  (custom-set-variables `(recentf-save-file ,(expand-file-name "recentf" my-cache-dir)))
   (recentf-mode 1))
 
 

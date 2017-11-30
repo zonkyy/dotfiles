@@ -9,7 +9,7 @@
    ("C-M-j" . skk-undo-kakutei))
 
   :init
-  (setq skk-user-directory (format "%s/ddskk" my-cache-dir)
+  (setq skk-user-directory (expand-file-name "ddskk" my-cache-dir)
         skk-large-jisyo (expand-file-name "skkdict/SKK-JISYO.L" user-emacs-directory)
         skk-use-azik t
 
