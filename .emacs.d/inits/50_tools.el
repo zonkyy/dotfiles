@@ -94,3 +94,8 @@
       (helm :sources (helm-build-sync-source "Junk files"
                        :candidates (open-junk-file-reversed-file-list))
             :buffer "*Helm junk file source*")))
+
+
+(use-package git-gutter+
+  :ensure t
+  :init (global-git-gutter+-mode t))
