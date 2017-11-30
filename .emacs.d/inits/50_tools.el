@@ -1,6 +1,3 @@
-
-
-
 (use-package other-window-or-split
   :load-path "elisp"
   :bind* ("C-q" . other-window-or-split-or-close))
@@ -69,3 +66,31 @@
 
   :config
   (define-thing-commands))
+
+
+(use-package open-junk-file
+  :ensure t
+  :bind (("C-x j" . open-junk-file)
+         ("C-x J" . open-junk-file-open-last-file)
+         ("C-x M-j" . open-junk-file-open-file-by-helm))
+
+  :init
+  (setq open-junk-file-format "~/junk/%Y/%m/%Y-%m-%d-%H%M%S."
+        ;; 別ウィンドウではなく現在のウィンドウに開く
+        open-junk-file-find-file-function 'find-file)
+
+  (use-package em-glob)
+  (defun open-junk-file-reversed-file-list ()
+    (reverse (eshell-extended-glob (expand-file-name "*/*/????-??-??-??????.*" "~/junk"))))
+
+  ;; 一番新しい junk ファイルを開く
+  (defun open-junk-file-open-last-file ()
+    (interactive)
+    (find-file (car (open-junk-file-reversed-file-list))))
+
+  ;; junk ファイルを helm で選択する
+  (defun open-junk-file-open-file-by-helm ()
+      (interactive)
+      (helm :sources (helm-build-sync-source "Junk files"
+                       :candidates (open-junk-file-reversed-file-list))
+            :buffer "*Helm junk file source*")))
