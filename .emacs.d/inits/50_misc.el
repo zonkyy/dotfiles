@@ -43,7 +43,9 @@
  local-function-key-map (delq '(kp-tab . [9]) local-function-key-map)
  ;; 長いリストを全て出力
  eval-expression-print-length nil
- eval-expression-print-level nil)
+ eval-expression-print-level nil
+ ;; 行末に改行を挿入する
+ require-final-newline t)
 
 ;; タブ文字ではなくスペースでインデント
 (setq-default indent-tabs-mode nil)
