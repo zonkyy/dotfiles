@@ -154,3 +154,11 @@
         recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
   (custom-set-variables `(recentf-save-file ,(format "%s/recentf" my-cache-dir)))
   (recentf-mode 1))
+
+
+(use-package redo+
+  :ensure t
+  :bind (("C-?" . redo))
+  :init (setq undo-no-redo t
+              undo-limit 600000
+              undo-strong-limit 900000))
