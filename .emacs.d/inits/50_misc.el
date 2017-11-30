@@ -164,3 +164,11 @@
   :init (setq undo-no-redo t
               undo-limit 600000
               undo-strong-limit 900000))
+
+
+(use-package thingopt
+  :ensure t
+  :bind ("C-@" . mark-word*)
+
+  :config
+  (define-thing-commands))
