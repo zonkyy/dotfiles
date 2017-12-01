@@ -11,3 +11,8 @@
   :init
   (defvar my-cache-dir "~/.emacs.cache")
   (init-loader-load))
+
+(use-package mykie
+  :ensure t
+  :init (setq mykie:use-major-mode-key-override t)
+  :config (mykie:initialize))
