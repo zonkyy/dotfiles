@@ -92,7 +92,8 @@
   (defun open-junk-file-open-file-by-helm ()
       (interactive)
       (helm :sources (helm-build-sync-source "Junk files"
-                       :candidates (open-junk-file-reversed-file-list))
+                       :candidates (open-junk-file-reversed-file-list)
+                       :action 'helm-type-file-actions)
             :buffer "*Helm junk file source*")))
 
 
