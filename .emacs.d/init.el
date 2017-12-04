@@ -14,5 +14,6 @@
 
 (use-package mykie
   :ensure t
-  :init (setq mykie:use-major-mode-key-override t)
-  :config (mykie:initialize))
+  :config
+  (setq mykie:use-major-mode-key-override t)
+  (mykie:initialize))

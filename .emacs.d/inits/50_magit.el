@@ -4,7 +4,7 @@
          :map magit-mode-map
          ("e" . magit-ediff-show-staged-or-unstaged))
 
-  :init
+  :config
   (defun magit-ediff-show-staged-or-unstaged ()
     (interactive)
     (pcase (magit-diff--dwim)

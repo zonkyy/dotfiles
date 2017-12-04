@@ -13,7 +13,7 @@
 
 
 (use-package whitespace
-  :init
+  :config
   (global-whitespace-mode 1)
 
   (setq
@@ -44,7 +44,7 @@
 
 (use-package recentf-ext
   :ensure t
-  :init
+  :config
   (setq recentf-max-saved-items 2000
         recentf-auto-cleanup 600
         recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
@@ -71,7 +71,7 @@
          ("C-x J" . open-junk-file-open-last-file)
          ("C-x M-j" . open-junk-file-open-file-by-helm))
 
-  :init
+  :config
   (setq open-junk-file-format "~/junk/%Y/%m/%Y-%m-%d-%H%M%S."
         ;; 別ウィンドウではなく現在のウィンドウに開く
         open-junk-file-find-file-function 'find-file)
@@ -96,13 +96,14 @@
 
 (use-package git-gutter+
   :ensure t
-  :init (global-git-gutter+-mode t))
+  :config
+  (global-git-gutter+-mode t))
 
 
 (use-package pcre2el
   :ensure t
   :bind ("C-l r" . pcre-query-replace-regexp)
 
-  :init
+  :config
   (setq reb-re-syntax 'pcre)
   (add-hook 'prog-mode-hook 'rxt-mode))

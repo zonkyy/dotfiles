@@ -8,7 +8,7 @@
    :map skk-j-mode-map
    ("C-M-j" . skk-undo-kakutei))
 
-  :init
+  :config
   (setq skk-user-directory (expand-file-name "ddskk" my-cache-dir)
         skk-large-jisyo (expand-file-name "skkdict/SKK-JISYO.L" user-emacs-directory)
         skk-use-azik t
@@ -69,7 +69,6 @@
     (skk-my-azik-put-additional-rom-kana-rules))
   (add-hook 'skk-azik-load-hook 'skk-azik-load-hooks)
 
-  :config
   (defun skk-j-mode-and-toggle-kana ()
     (interactive)
     (cond (skk-j-mode

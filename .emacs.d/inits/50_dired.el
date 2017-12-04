@@ -6,9 +6,7 @@
               ("q" . dired-dwim-quit-window)
               ("r" . wdired-change-to-wdired-mode))
 
-  :init
-  (require 'dired-x)
-
+  :config
   (defun dired-dwim-find-alternate-file ()
     "画面分割に適した `dired-find-alternate-file'"
     (interactive)
@@ -44,7 +42,6 @@
      (t
       (dired-up-alternate-directory))))
 
-  :config
   ;; ファイルを削除したらゴミ箱へ
   (setq delete-by-moving-to-trash t)
   ;; コピーと削除を再帰で
@@ -64,10 +61,12 @@
 
 
 (use-package dired-x
+  :commands (dired-jump)
   :bind (:map ctl-x-map
+              ("C-j" . dired-jump)
               ("C-M-j" . dired-jump-home))
 
-  :init
+  :config
   (defun dired-jump-home ()
     (interactive)
     (dired-jump nil "~/")))
