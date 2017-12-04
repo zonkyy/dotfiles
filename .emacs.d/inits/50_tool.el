@@ -52,12 +52,9 @@
   (recentf-mode 1))
 
 
-(use-package redo+
+(use-package undo-tree
   :ensure t
-  :bind (("C-?" . redo))
-  :init (setq undo-no-redo t
-              undo-limit 600000
-              undo-strong-limit 900000))
+  :config (global-undo-tree-mode))
 
 
 (use-package thingopt
