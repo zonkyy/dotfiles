@@ -42,15 +42,15 @@
      (t
       (dired-up-alternate-directory))))
 
-  ;; ファイルを削除したらゴミ箱へ
-  (setq delete-by-moving-to-trash t)
-  ;; コピーと削除を再帰で
-  (setq dired-recursive-copies 'always)
-  (setq dired-recursive-deletes 'always)
-  ;; 2 画面なら他方にコピー
-  (setq dired-dwim-target t)
-  ;; ls のオプション変更
-  (setq dired-listing-switches "-GFlhLA --group-directories-first")
+  (setq dired-listing-switches "-GFlhLA --group-directories-first"
+        ;; ファイルを削除したらゴミ箱へ
+        delete-by-moving-to-trash t
+        ;; コピーと削除を再帰で
+        dired-recursive-copies 'always
+        dired-recursive-deletes 'always
+        ;; 2 画面なら他方にコピー
+        dired-dwim-target t)
+
   ;; 新規バッファを生成しない
   (put 'dired-find-alternate-file 'disabled nil)
 
