@@ -97,3 +97,12 @@
 (use-package git-gutter+
   :ensure t
   :init (global-git-gutter+-mode t))
+
+
+(use-package pcre2el
+  :ensure t
+  :bind ("C-l r" . pcre-query-replace-regexp)
+
+  :init
+  (setq reb-re-syntax 'pcre)
+  (add-hook 'prog-mode-hook 'rxt-mode))
