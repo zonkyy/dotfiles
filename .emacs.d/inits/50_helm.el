@@ -5,3 +5,8 @@
          :map helm-map
          ("C-j" . helm-maybe-exit-minibuffer)
          ("C-;" . anything-keyboard-quit)))
+
+
+(use-package helm-z
+  :ensure t
+  :bind (("M-+" . helm-z)))
